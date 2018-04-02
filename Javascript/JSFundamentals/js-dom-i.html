@@ -11,7 +11,12 @@
         <h1>Students</h1>
         <ul id="main">
             <!-- THIS IS EMPTY! -->
-        </ul> 
+        </ul>
+        <hr>
+        <div id="supermain">
+            <h1>Students Bonus</h1>
+            <!-- THIS IS EMPTY! -->
+        </div>
         <script>
 
             function appendList(array, id)
@@ -27,6 +32,19 @@
             let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
             let target_id = "main";
             appendList(students, target_id);
+
+            // BONUS
+            function superAppend(array, element, id){
+                for(var i = 0; i < array.length; i++)
+                {
+                    let superapp = document.createElement(element);
+                    superapp.innerHTML = array[i];
+                    document.getElementById(super_target_id).appendChild(superapp);
+                }
+            };
+            let superstudents = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+            let super_target_id = "supermain";
+            superAppend(superstudents, "h2", super_target_id);
 
         </script>   
 
