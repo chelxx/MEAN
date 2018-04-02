@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Ninja Class III</title>
+    
+    <!-- ASSIGNMENT STARTS HERE -->
+    <script>
+
+        // PART 1
+        class Ninja
+        {
+            constructor(name)
+            {
+                const self = this;
+                this.name = name;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+            }
+            sayName()
+            {
+                console.log("Hello, my ninja name is " + this.name + "!");                
+            }
+            showStats()
+            {
+                console.log("Name: "+ this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength);                
+            }
+            drinkSake()
+            {
+                this.health += 10;
+                console.log("Drank sake! It added 10 points to " + this.name + "'s health!");
+            }
+            punch(enemy)
+            {
+                if(enemy instanceof Ninja == false)
+                {
+                    console.log("Hey! That is not the ninja way!");
+                }
+                else
+                {
+                    enemy.health -= 5;
+                    console.log(enemy.name + " was punched by " + this.name + " and lost 5 health points!");
+                }
+            }
+            kick(enemy)
+            {
+                if(enemy instanceof Ninja == false)
+                {
+                    console.log("Hey! That is not the ninja way!");
+                }
+                else
+                {
+                    let kickstrength = privateStrength * 15;
+                    enemy.health -= kickstrength;
+                    console.log(enemy.name + " was kicked by " + this.name + " and lost " + kickstrength + " health points!");
+                    console.log(enemy.name + "'s health is now " + enemy.health + "!");
+                }
+            }
+        }
+
+        // PART 2
+        class Sensei extends Ninja
+        {
+            constructor(name)
+            {
+                super(name);
+                this.name = name;
+                this.health = 200;
+                this.speed = 10;
+                this.strength = 10;
+                this.wisdom = 10;
+            }
+            speakWisdom()
+            {
+                this.drinkSake();
+                console.log("Sensei is drinking sake. Incoming wisdom...");
+                console.log("It was just drunken rambling but Sensei " + this.name + "'s health is now " + this.health + "!");
+            }
+        }
+
+        const chelsea = new Ninja("Chelsea");
+        chelsea.sayName();
+        chelsea.showStats();
+        chelsea.drinkSake();
+        chelsea.showStats();
+
+        const senseiJessica = new Sensei("Jessica");
+        senseiJessica.speakWisdom();
+        
+    </script>
+    <!-- ASSIGNMENT ENDS HERE -->
+    </head>
+    <body>
+        <!-- HELLO THERE! EMPTY! -->
+    </body>
+</html>
