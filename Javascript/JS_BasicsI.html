@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Basic I</title>
+    
+    <!-- ASSIGNMENT STARTS HERE -->
+    <script>
+
+        // BASIC 1
+        let x = [];
+        x.push("coding");
+        x.push("dojo");
+        x.push("rocks");
+        x.pop();
+        console.log(x);
+
+        // BASIC 2
+        const y = [];
+        y.push(88);
+        console.log(y);
+        // What happened? 88 was added to the array! const is not about immutability. It's about not being able to re-assign it completely!
+
+        // BASIC 3
+        let z = [9, 10, 6, 5, -1, 20, 13, 2];
+        //PRINT EVERY ELEMENT TO THE CONSOLE
+        for(var i = 0; i < z.length; i++)
+        {
+            console.log(z[i]);
+        }
+        // PRINT EVERY ELEMENT EXCEPT THE LAST
+        for(var i = 0; i < z.length-1; i++)
+        {
+            console.log(z[i]);
+        }
+
+        // BASIC 4
+        let names = ['Kadie', 'Joe', 'Fritz', 'Pierre', 'Alphonso'];
+        // PRINT THE LENGTH OF ALL THE NAMES
+        console.log(names.length);
+        // PRINT THE NAMES WITH 5 CHARACTERS
+        for(let name in names)
+        {
+            if(names[name].length === 5)
+            {
+                console.log(names[name]);
+            }
+        }
+
+        //BASIC 5
+        function yell(string)
+        {
+            console.log(string.toUpperCase());
+        }
+        yell("hello world!");
+        
+    </script>
+    <!-- ASSIGNMENT ENDS HERE -->
+    </head>
+    <body>
+        <!-- HELLO THERE! EMPTY! -->
+    </body>
+</html>
