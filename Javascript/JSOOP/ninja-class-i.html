@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Math</title>
+    
+    <!-- ASSIGNMENT STARTS HERE -->
+    <script>
+
+        function Ninja(name)
+        {
+            const self = this;
+            const privateSpeed = 3;
+            const privateStrength = 3;
+            this.name = name;
+            this.health = 100;
+
+            this.sayName = function()
+            {
+                console.log("Hello, my ninja name is " + this.name + "!");
+            }
+            this.showStats = function()
+            {
+                console.log("Name: "+ this.name + ", Health: " + this.health + ", Speed: " + privateSpeed + ", Strength: " + privateStrength);
+            }
+            this.drinkSake = function()
+            {
+                this.health += 10;
+                console.log("Drank sake! It added 10 points to " + this.name + "'s health!");
+            }
+        }
+
+        const chelsea = new Ninja("Chelsea");
+        chelsea.sayName();
+        chelsea.showStats();
+        chelsea.drinkSake();
+        chelsea.showStats();
+
+        const jessica = new Ninja("Jessica");
+        jessica.sayName();
+        jessica.showStats();
+        jessica.drinkSake();
+        jessica.showStats();
+
+        const morty = new Ninja("Morty");
+        morty.sayName();
+        morty.showStats();
+        morty.drinkSake();
+        morty.showStats();
+        
+    </script>
+    <!-- ASSIGNMENT ENDS HERE -->
+    </head>
+    <body>
+        <!-- HELLO THERE! EMPTY! -->
+    </body>
+</html>
