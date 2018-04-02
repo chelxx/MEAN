@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Basic I</title>
+    
+    <!-- ASSIGNMENT STARTS HERE -->
+    <script>
+
+        // MATH 1
+        function zeronegativity(arr)
+        {
+            let status = true;
+            for(var i = 0; i < arr.length; i++)
+            {
+                if(arr[i] < 0)
+                {
+                    status = false;
+                }
+            }
+            return status;
+        }
+        zeronegativity([1,2,3,4,5]);
+        zeronegativity([1,2,3,4,-5]);
+
+        // MATH 2
+        function is_even(num)
+        {
+            let status = true;
+            if(num % 2 != 0)
+            {
+                status = false;
+            }
+            return status;
+        }
+        is_even(5);
+        is_even(10);
+
+        // MATH 3
+        function how_many_even(arr)
+        {
+            count = 0;
+            for(var i = 0; i < arr.length; i++)
+            {
+                if(arr[i] % 2 === 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        how_many_even([1,2,3,4,5,6]);
+
+        // MATH 4
+        function create_dummy_array(n)
+        {
+            let array = [];
+            for(var i = 0; i < n; i++)
+            {
+                array.push(Math.floor(Math.random()*(array.length)));
+            }
+            return array;
+        }
+        create_dummy_array(10);
+
+        // MATH 5
+        function random_choice(arr)
+        {
+            let random = arr[Math.floor(Math.random()*(arr.length))];
+            return random;
+        }
+        random_choice([1,2,3,4,5,6,7,8,9,0]);
+        
+    </script>
+    <!-- ASSIGNMENT ENDS HERE -->
+    </head>
+    <body>
+        <!-- HELLO THERE! EMPTY! -->
+    </body>
+</html>
