@@ -9,7 +9,64 @@
     <!-- ASSIGNMENT STARTS HERE -->
     <script>
 
+        // PART 1
+        function starString(num)
+        {
+            let star = "";
+            while(num > 0)
+            {
+                star = star + "*";
+                num--;
+            }
+            return star;
+        }
+        starString(10);
 
+        // PART 2
+        function drawStars(arr)
+        {
+            for(var i = 0; i < arr.length; i++)
+            {
+                let star = "";
+                while(arr[i] > 0)
+                {
+                    star = star + "*";
+                    arr[i]--;
+                }
+                console.log(star);
+            }
+        }
+        drawStars([3,6,9]);
+
+        // PART 3
+        function drawStarsMod(arr)
+        {
+            for(var i = 0; i < arr.length; i++)
+            {
+                if(typeof arr[i] === "number")
+                {
+                    let star = "";
+                    while(arr[i] > 0)
+                    {
+                        star = star + "*";
+                        arr[i]--;
+                    }
+                    console.log(star);
+                }
+                else if(typeof arr[i] === "string")
+                {
+                    let star = "";
+                    let string = arr[i].length;
+                    while(string > 0)
+                    {
+                        star = star + arr[i][0];
+                        string--;
+                    }
+                    console.log(star.toLowerCase());
+                }
+            }
+        }
+        drawStarsMod([4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"])
         
     </script>
     <!-- ASSIGNMENT ENDS HERE -->
