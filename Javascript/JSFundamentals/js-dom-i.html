@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JS DOM I</title>
+    </head>
+    <body>
+
+        <h1>Students</h1>
+        <ul id="main">
+            <!-- THIS IS EMPTY! -->
+        </ul> 
+        <script>
+
+            function appendList(array, id)
+            {
+                let i = 0;
+                while(i < array.length)
+                {
+                    let student = "<li>" + array[i] + "</li>";
+                    document.getElementById(id).innerHTML += student;
+                    i++;
+                }
+            };
+            let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+            let target_id = "main";
+            appendList(students, target_id);
+
+        </script>   
+
+    </body>
+</html>
