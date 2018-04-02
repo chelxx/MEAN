@@ -33,6 +33,7 @@
 			for(let j = 0; j<13; j++){
 				// calculate our number
                 let nums = (i === 0 && j === 0) ? "x" : (i === 0) ? j : (j === 0) ? i : i * j;
+				// *condition* ? *if condition is true* : *if condition is false*
 				// attach our table data tags around the number
 				let data = "<td>" + nums + "</td>";
 				// add it to the html
