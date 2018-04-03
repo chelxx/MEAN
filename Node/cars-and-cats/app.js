@@ -14,6 +14,15 @@ var server = http.createServer(function (request, response){
             response.end(); // finished!
         });
     }
+
+    else if(request.url === '/stylesheets/style.css'){
+        fs.readFile('./stylesheets/style.css', 'utf8', function(errors, contents){
+         response.writeHead(200, {'Content-type': 'text/css'});
+         response.write(contents);
+         response.end();
+        })
+    }
+
     else if(request.url === '/cars') {
         fs.readFile('views/cars.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'});  // send data about response
@@ -85,7 +94,7 @@ var server = http.createServer(function (request, response){
             response.end(); // finished!
         });
     }
-    
+
     // request didn't match anything:
     else {
         response.writeHead(404);
