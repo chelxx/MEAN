@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GO FISH WITH COLE</title>
+
+    <!-- ASSIGNMENT STARTS HERE -->    
+    <script>
+    function player(name,arr){
+        this.name = name;
+        this.hand = arr;
+        this.points = 0;
+        this.ask = function(player,value){
+            let hasit = true
+            let cards = []
+            let key;
+            for(var i = 0; i < player.hand.length; i++){
+                if(player.hand[i] == value){
+                    cards = player.hand[i];
+                    key = i
+                    hasit = false
+                }
+            }
+            if(cards.length > 0){
+                this.hand.push(cards);
+                player.hand.splice(key);
+            }
+            if(hasit == true){
+                console.log('go fish')
+            }
+        }
+        this.draw = function(deck){
+            this.hand.push(deck.cards[cards.deck.length -1])
+            deck.cards.pop()
+        }
+        this.check = function(){
+            this.hand.sort()
+            let count = 0;
+            let index = [];
+            for(var i = 0; i < this.hand.length; i++){
+                if(this.hand[i] == this.hand[i + 1]){
+                    count++;
+                    index[i] = i
+                    i++
+                }
+            }
+            if(count > 0){
+                this.hand.splice(index[i])
+                this.hand.splice(index[i])
+            }
+            this.points += count;
+            }
+        }
+    function deck(){
+        this.cards = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9]
+        this.shuffle = function(){
+            for(let i = this.cards.length -1; i > 0; i--){
+                const j = Math.floor(Math.random() * (i + 1));
+                [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+            }
+        }
+        this.draw = function(arr){
+            for(var i = this.cards.length - 1; i > this.cards.length - 8; i--){
+                arr.push(this.cards[i])
+            }
+            let z = 0
+            while(z < 8){
+                this.cards.pop();
+                z++
+            }
+            return arr
+        }
+    }
+    let newdeck = new deck()
+    newdeck.shuffle()
+    let hand = []
+    let hand2 = []
+    hand = newdeck.draw(hand)
+    hand2 = newdeck.draw(hand2)
+    let player1 = new player('jessica',hand)
+    let player2 = new player('Wu',hand2)
+    player2.ask(player1,4)
+    console.log(player2.hand)
+    </script>
+    <!-- ASSIGNMENT ENDS HERE -->
+    
+</head>
+<body>
+    <!-- HELLO THERE! EMPTY! -->
+</body>
+</html>
