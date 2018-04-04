@@ -41,7 +41,7 @@
                 }
                 else
                 {
-                    enemy.health -= 5;
+                    ninja.health -= 5;
                     console.log(enemy.name + " was punched by " + this.name + " and lost 5 health points!");
                 }
             }
@@ -91,6 +91,9 @@
         senseiJessica.speakWisdom();
         senseiJessica.showStats();
         
+        const tom = new Ninja("Tom");
+        tom.punch(chelsea);
+
     </script>
     <!-- ASSIGNMENT ENDS HERE -->
     </head>
