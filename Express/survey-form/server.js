@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
     res.render("index");
 })
 app.post('/submit', function(req, res) {
-    var result = 
+    let result = 
     {
         name: req.body.name,
         location: req.body.location,
