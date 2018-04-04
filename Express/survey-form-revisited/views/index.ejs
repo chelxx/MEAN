@@ -21,7 +21,7 @@
 
            socket.on( 'updated_msg', function (data){
                let jsonresult = JSON.stringify(data);
-               $("div#result").append("Your Information emitted by the server is: " + data);
+               $("div#result").append("Your Information emitted by the server is: " + jsonresult);
             });
 
             socket.on('random', function (data){

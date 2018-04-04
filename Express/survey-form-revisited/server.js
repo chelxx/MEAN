@@ -36,3 +36,5 @@ io.sockets.on('connection', function (socket) {
         socket.emit( 'random', {random: random});
     });
 });
+
+// Note: Assignment not perfect... updated_msg is not the right format when appended to the html page. HOW?!
