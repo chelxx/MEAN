@@ -1,3 +1,18 @@
 body {
-    background-color: skyblue;
+    background-color: papayawhip;
+}
+th, *{
+    color: orange;
+}
+button {
+    border-radius: 10px;
+    border: none;
+    background-color: orangered;
+    color: white;
+}
+button:hover {
+    background-color: orange;
+}
+span {
+    color: yellowgreen;
 }
