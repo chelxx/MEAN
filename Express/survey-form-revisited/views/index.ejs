@@ -14,19 +14,21 @@
 
            var socket  = io.connect();
 
+            // $('form#surveyform').submit(function(){
+            //     socket.emit("posting_form", {data: {name: $("input[name='name']").val(), location: $("input[name='location']").val(), language: $("input[name='language']").val(), comment: $("input[name='comment']").val()}
+            // });
+
            $( 'form#surveyform').submit(function (){
-               socket.emit( "posting_form", $(this).serialize());
+               socket.emit( "posting_form", $(this).serializeArray());
                return false;
            });
 
            socket.on( 'updated_msg', function (data){
-               console.log(data);
-               $("div#result").append("Your Information emitted by the server is: " + data.data);
-               let jsonresult = JSON.stringify(data.data);
+               let jsonresult = JSON.stringify(data);
+               $("div#result").append("Your Information emitted by the server is: " + jsonresult);
             });
 
             socket.on('random', function (data){
-               console.log(data);
                $("div#results").append("Your lucky number emitted by the server is: " + data.random + "!")
             });
         })
@@ -51,7 +53,6 @@
             <th>Dojo Location:</th>
             <td>
                 <select name="location">
-                    <option selected="selected">Select</option>
                     <option value="Chicago">Chicago</option>
                     <option value="Tulsa">Tulsa</option>
                     <option value="Seattle">Seattle</option>
@@ -62,7 +63,6 @@
             <th>Favorite Language:</th>
             <td>
                 <select name="language">
-                    <option selected="selected">Select</option>
                     <option value="Javascript">Javascript</option>
                     <option value="Python">Python</option>
                     <option value="C#">C#</option>

@@ -25,7 +25,7 @@ var server = app.listen(6789, function() {
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function (socket) {
-    
+
     console.log("Client/socket is connected!");
     console.log("Client/socket id is: ", socket.id);
     
