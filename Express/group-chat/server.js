@@ -36,3 +36,5 @@ io.on('connection', function(socket){
         socket.broadcast.emit('typing', data);
     })
 });
+
+// Note: Guys lmao follow this youtube tutorial https://www.youtube.com/watch?v=vQjiN8Qgs3c&t=1s&index=17&list=WL
