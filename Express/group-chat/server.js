@@ -37,4 +37,6 @@ io.on('connection', function(socket){
     })
 });
 
-// Note: Guys lmao follow this youtube tutorial https://www.youtube.com/watch?v=vQjiN8Qgs3c&t=1s&index=17&list=WL
+// Notes: There are still a couple things that needs to be done!
+// Note: Guys lmao follow this youtube tutorial 
+// https://www.youtube.com/watch?v=vQjiN8Qgs3c&t=1s&index=17&list=WL
