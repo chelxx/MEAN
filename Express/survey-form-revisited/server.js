@@ -30,7 +30,6 @@ io.sockets.on('connection', function (socket) {
     console.log("Client/socket id is: ", socket.id);
     
     socket.on( "posting_form", function (data){
-        console.log( 'Someone clicked a button!  Reason: '  + data.reason);
         socket.emit( 'updated_msg', {data});        
         let random = Math.floor(Math.random() * 1000);
         socket.emit( 'random', {random: random});
