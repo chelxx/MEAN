@@ -31,10 +31,10 @@ io.sockets.on('connection', function (socket) {
     socket.on( "counter", function (data){
         count += 1;
         console.log(count)
-        io.emit('server_response', {response: "Hello, client!", count: count})
+        io.emit('server_response', {response: "Hello, client!", count: count});
     });
     socket.on( "reset", function (data){
         count = 0;
-        io.emit('server_response', {response: "Hello, client!", count: count})
+        io.emit('server_response', {response: "Hello, client!", count: count});
     });
 });

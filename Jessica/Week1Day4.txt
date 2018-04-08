@@ -1,0 +1,11 @@
+What is a server?
+
+What is Node?
+
+What are some benefits of using a Node server?
+
+What are some disadvantages of a Node server?
+
+What is NPM and what is its purpose?
+* Node Package Manager - makes Javascript a powerful development platform. Its job is to 
+
