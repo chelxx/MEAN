@@ -1,0 +1,24 @@
+h1, h3, * {
+    color: orange;
+}
+h1 {
+    text-align: center;
+}
+hr {
+    background-color: rgb(124, 206, 0);
+    border: 0;
+    height: 2px;
+}
+button.btn {
+    background-color: orange;
+    border: none;
+}
+button.btn:hover {
+    background-color: rgb(124, 206, 0);
+}
+li h5 {
+    color: rgb(232, 100, 122);
+}
+h4 {
+    color: rgb(124, 206, 0);
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <title>Cat Dashboard</title>
+</head>
+<body class="container">
+    <h1>CAT DASHBOARD</h1>
+    <hr>
+    <h3>CAT INFORMATION:</h3>
+    <!-- CAT DETAILS HERE -->
+    <ul>
+        <li>Name: <h5><a href="/viewcat/<%= cat._id %>"><%= cat.name %></a></h5></li>
+        <li>Breed: <h5><%= cat.breed %></h5></li>
+        <li>Personality: <h5><%= cat.personality %></h5></li>
+    </ul>
+    <hr>
+    <a href="/editcat/<%= cat._id %>"><button class="btn btn-info">EDIT CAT</button></a>    
+</body>
+</html>

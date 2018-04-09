@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <title>Cat Dashboard</title>
+</head>
+<body class="container">
+    <h1>CAT DASHBOARD</h1>
+    <hr>
+    <form action="/createnewcat" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" class="form-control">
+        <label>Breed:</label>
+        <input type="text" name="breed" class="form-control">              
+        <label>Personality:</label>
+        <select name="personality" class="form-control">
+            <option value="Playful">Playful</option>
+            <option value="Lazy">Lazy</option>
+            <option value="Loving">Loving</option>
+            <option value="Independent">Independent</option>
+        </select>
+        <br>
+        <button class="btn btn-info">SUBMIT</button>
+    </form>
+    <hr>
+    <a href="/"><button class="btn btn-info">GO HOME</button></a>
+</body>
+</html>

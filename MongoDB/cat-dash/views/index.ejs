@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <title>Cat Dashboard</title>
+</head>
+<body class="container">
+    <h1>CAT DASHBOARD</h1>
+    <hr>
+    <h3>LIST OF ALL THE CATS:</h3>
+    <ul>
+        <!-- FOREACH HERE -->
+        <% cats.forEach(function (cat) { %>
+            <li><h5><a href="/viewcat/<%= cat._id %>"><%= cat.name %></a></h5></li>
+            <h4>**********</h4>
+        <% }) %>
+    </ul>
+    <hr>
+    <a href="/newcat"><button class="btn btn-info">ADD A CAT</button></a>
+</body>
+</html>

@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "./static")));
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
-mongoose.connect('mongodb://localhost/basic_mongoose_app');
+mongoose.connect('mongodb://localhost/QuotingDojo');
 var QuoteSchema = new mongoose.Schema({
     name: { type: String, required: true, minlength: 2 },
     quote: { type: String, required: true, minlength: 2 },
