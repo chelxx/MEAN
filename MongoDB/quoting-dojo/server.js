@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/QuotingDojo');
 var QuoteSchema = new mongoose.Schema({
     name: { type: String, required: true, minlength: 2 },
     quote: { type: String, required: true, minlength: 2 },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now, required: true }
 })
 
 mongoose.model('Quote', QuoteSchema);
@@ -40,6 +40,10 @@ app.post('/create', function(req, res){
     quote.save(function(err){
         if(err) {
             console.log('something went wrong!');
+            Quote.find({}).exec(function(err, quotes){
+                if(err) throw err;
+                res.render("index", { "quotes": quotes, errors: quote.errors})
+            })
         } else { // else console.log that we did well and then redirect to the root route
             console.log('successfully added a quote!');
             res.redirect('/');

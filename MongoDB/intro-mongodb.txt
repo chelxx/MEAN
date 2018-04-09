@@ -52,6 +52,10 @@ AND
 
 > db.students.update({}, {$set: {interests: ["coding", "brunch", "MongoDB"]}}, false, true)
 
+OR
+ 
+> db.students.updateMany({}, {$set: {interests: ["coding", "brunch", "MongoDB"]}})
+
 9. Add some unique interests for each particular student into each of their interest arrays.
 
 > db.students.update({name: "Chelsea"}, {$push: {interests: "sleeping"}}, false, true)

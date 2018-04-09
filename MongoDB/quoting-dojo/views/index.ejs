@@ -17,6 +17,13 @@
         <label>Quote:</label>
         <textarea name="quote" class="form-control"></textarea>
         <br>
+        <% if(typeof(errors) != 'undefined' ) { %>
+            <ul>
+                <% for (var x in errors) { %>
+                <li style="color: tomato"><%= errors[x].message %></li>
+                <% } %>
+            </ul>
+        <% } %>
         <button class="btn btn-info">SUBMIT QUOTE</button>
     </form>
     <hr>

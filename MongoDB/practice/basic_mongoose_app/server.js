@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/basic_mongoose_app');
 var UserSchema = new mongoose.Schema({
     name: { type: String, required: true, minlength: 2 },
-    age: { type: Number, min: 1, max: 150 }
+    age: { type: Number, required: true, min: 1, max: 150 }
 })
 mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
 var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'   
@@ -46,6 +46,9 @@ app.post('/users', function(req, res) {
       // if there is an error console.log that something went wrong!
       if(err) {
         console.log('something went wrong');
+        User.find({}).exec(function(err, users) { 
+            res.render('index', { "users": users, errors: user.errors});
+        })
       } else { // else console.log that we did well and then redirect to the root route
         console.log('successfully added a user!');
         res.redirect('/');
