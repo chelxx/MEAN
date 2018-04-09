@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <title>Dojo Message Board</title>
+</head>
+<body class="container">
+    <h1>WELCOME TO THE DOJO MESSAGE BOARD</h1>
+    <hr>
+    <form action="/createmessage" method="post">
+        <label>Name:</label>
+        <input type="text" name="msgname" class="form-control">
+        <label>Message:</label>
+        <textarea name="message" class="form-control"></textarea>
+        <br>
+        <button class="btn btn-info form-control">POST MESSAGE</button>
+        <% if(typeof(errors) != 'undefined' ) { %>
+            <ul>
+                <% for (var x in errors) { %>
+                <li style="color: tomato"><%= errors[x].message %></li>
+                <% } %>
+            </ul>
+        <% } %>
+    </form>
+    <hr>
+    <!-- MESSAGES AND COMMENT GO HERE -->
+    <div>
+        <% messages.forEach(function(message) { %>
+            <blockquote>
+                <h5><span>Name:</span> <%= message.msgname %></h5>
+                <h5><span>Message:</span> <%= message.message %></h5>
+            </blockquote>
+            <div class="col-md-7 comments">
+                <form action="/createcomment/<%= message._id %>" method="post">
+                    <label>Name:</label>
+                    <input type="text" name="cmntname" class="form-control">
+                    <label>Comment:</label>
+                    <textarea name="comment" class="form-control"></textarea>
+                    <br>
+                    <button class="btn btn-info comment form-control">POST COMMENT</button>
+                </form>
+                <br>
+                <div>
+                    <% comments.forEach(function(comment) { %>
+                        <% if (comment._message.toString() === message._id.toString()) { %>
+                            <blockquote class="cmnt">
+                                <h6><span class="rev">Name:</span> <%= comment.cmntname %></h6>
+                                <h6><span class="rev">Comment:</span> <%= comment.comment %></h6>
+                            </blockquote>
+                        <% } %>
+                    <% }); %>
+                </div>
+            </div>
+            <hr class="inner col-md-10">
+        <% }); %>
+    </div>
+</body>
+</html>

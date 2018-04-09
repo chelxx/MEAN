@@ -99,3 +99,9 @@ OR
 19. Add a 'updated_on' field, and set the value as the current date.
 
 > db.students.update({}, {$set: {updated_on: new Date()}})
+
+
+
+Notes:
+
+> db.collection_name.drop()

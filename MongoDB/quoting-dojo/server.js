@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 
 var app = express();
-var path = require("path");
 
 mongoose.Promise = global.Promise;
 
@@ -18,7 +17,7 @@ mongoose.connect('mongodb://localhost/QuotingDojo');
 var QuoteSchema = new mongoose.Schema({
     name: { type: String, required: true, minlength: 2 },
     quote: { type: String, required: true, minlength: 2 },
-    date: { type: Date, default: Date.now, required: true }
+    date: { type: Date, default: Date.now}
 })
 
 mongoose.model('Quote', QuoteSchema);

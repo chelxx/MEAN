@@ -1,0 +1,59 @@
+h1, * {
+    color: rgb(236, 115, 135);
+}
+h1 {
+    text-align: center;
+}
+hr {
+    background-color: rgb(138, 198, 18);
+    border: 0;
+    height: 3px;
+}
+hr.inner {
+    border:none;
+    border-top:2px dotted orange;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+}
+button.btn {
+    background-color: rgb(138, 198, 18);
+    border: none;
+}
+button.btn:hover {
+    background-color: rgb(236, 115, 135);
+}
+blockquote {
+    border-left: 4px dotted rgb(138, 198, 18);
+    padding-left: 10px;
+}
+blockquote h5 {
+    font-weight: 300;
+    font-style: italic;
+}
+span {
+    color: rgb(138, 198, 18);
+}
+div.comments {
+    margin-left: 25px;
+}
+blockquote.cmnt {
+    border-left: 3px dotted rgb(236, 115, 135);
+    padding-left: 10px;
+}
+blockquote.cmnt h6 {
+    color: rgb(138, 198, 18);;
+    font-weight: 300;
+    font-style: italic;
+}
+span.rev {
+    color: rgb(236, 115, 135);
+}
+button.comment {
+    height: 25px;
+    background-color: rgb(236, 115, 135);
+}
+button.comment:hover {
+    height: 25px;
+    background-color: rgb(138, 198, 18);
+}
