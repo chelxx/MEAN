@@ -40,8 +40,6 @@ var Comment = mongoose.model('Comment');
 app.get('/', function(req, res) {
     Message.find({}).exec(function(err, messages){
         Comment.find({}).exec(function(err, comments){
-            console.log(typeof(comments[0]._message))
-            console.log(typeof(messages[0]._id))
             res.render("index", { "messages": messages, "comments": comments });
         })
     })
@@ -56,7 +54,7 @@ app.post('/createmessage', function(req, res){
                 if(err) throw err;
                 res.render("index", { "messages": messages, errors: message.errors})
             })
-        } else { // else console.log that we did well and then redirect to the root route
+        } else {
             console.log('successfully added a message!');
             res.redirect('/');
         }
@@ -76,7 +74,7 @@ app.post('/createcomment/:id', function(req, res){
                     if(err) throw err;
                     res.render("index", { "messages": messages, errors: message.errors})
                 })
-            } else { // else console.log that we did well and then redirect to the root route
+            } else {
                 console.log('successfully added a comment!');
                 res.redirect('/');
             }

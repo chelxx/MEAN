@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/viewquotes', function(req, res) {
-    Quote.find({}).exec(function(err, quotes){
+    Quote.find({}).sort({ date: -1 }).exec(function(err, quotes){
         if(err) throw err;
         res.render("quotes", { "quotes": quotes })
     })
