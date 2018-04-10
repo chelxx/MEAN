@@ -76,6 +76,20 @@ app.post('/editcat/:id', function(req, res){
     })
 })
 
+app.get('/deletecat/:id', function(req, res){
+    Cat.remove({ _id: req.params.id}, function(err){
+        if(err) {
+            console.log("something went wrong, dude!")
+            res.redirect('/');
+        }
+        else 
+        {
+            console.log("deleted a cat! noooo!");
+            res.redirect('/');
+        }
+    })
+})
+
 var server = app.listen(6789, function() {
     console.log("Listening on port 6789!"); 
 });

@@ -12,6 +12,7 @@ app.use(session({ secret: 'luvumichaelchoi' }));
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "./static")));
 app.set("views", path.join(__dirname, "./views"));
@@ -68,32 +69,47 @@ var UserSchema = new mongoose.Schema({
 mongoose.model('User', UserSchema);
 var User = mongoose.model('User');
 
+UserSchema.pre('save', function(next){
+    bcrypt.hash(this.password, 10).then(hash => {
+        this.password = hash;
+        next();
+    })
+})
+
 app.get('/', function (req, res) {
     res.render('index');
 })
 
 app.post('/registeruser', function (req, res) {
+    console.log(req.body);
     if(req.body.password == req.body.confirm_pw){
+        console.log(req);
+        console.log("**passwords:", req.body.password, req.body.confirm_pw); // BOTH ARE UNDEFINED? THE FUCK THO
         console.log("passwords match!");        
         var user = new User ({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            email: req.body.email,
-            password: req.body.password,
             birthday: req.body.birthday,
+            email: req.body.email,
+            password: req.body.password
         })
+        console.log("**form results:", req.body.first_name, req.body.last_name, req.body.email);
         user.save(function(err){
             if (err) {
                 console.log("something went wrong, dude!");
-                // HOW TO ADD ERRORS?!
-                res.redirect('/')
+                // IS THIS THE RIGHT WAY TO SHOW ERRORS?
+                // ONLY THE REQUIRED ERRORS ARE SHOWING
+                User.find({}).exec(function(err){
+                    if(err) throw err;
+                    res.render("index", { errors: user.errors, user})
+                })
             }
             else {
                 console.log("successfully registered a user!");
                 req.session.userID = user._id;
-                var person = req.session.userID;
-                console.log(person)
-                res.render('success');
+                console.log(req.session.userID)
+                console.log(user.first_name);
+                res.render('success', { user });
             }
         })
     }
@@ -104,7 +120,37 @@ app.post('/registeruser', function (req, res) {
 })
 
 app.post('/loginuser', function (req, res) {
-    res.render('success');
+    User.findOne({email: req.body.loginemail}).exec(function(err, user){
+        console.log(req.body.loginemail);
+        if(err){
+            console.log("shitty email address!");
+            res.redirect('/');
+        }
+        if(user == null) {
+            console.log("email address does not exist!");
+            res.redirect('/')
+        }
+        else {
+            console.log("not a shitty email address! go ahead!");
+            console.log(req.body.loginpassword, user.password);
+            bcrypt.compare(req.body.loginpassword, user.password).then(results => {
+                if(results == true)
+                {
+                    req.session.userID = user._id;
+                    console.log(req.session.userID)
+                    console.log(user.first_name);
+                    res.render('success', { user });
+                }
+                else {
+                    res.redirect('/');
+                }
+            })
+            .catch(err =>  {
+                console.log("incorrect password!");
+                res.redirect('/');
+            })
+        }
+    })
 })
 
 app.post('/logout', function (req, res) {
