@@ -26,12 +26,24 @@ var UserSchema = new mongoose.Schema({
     first_name: { 
         type: String, 
         required: [true, "First Name is required!"], 
-        minlength: [2, "First Name must be longer than 2 characters!"] 
+        minlength: [2, "First Name must be longer than 2 characters!"],
+        validate: {
+            validator: function(fname){
+                return /^[a-z ,.'-]+$/i.test(fname);
+            },
+            message: "First Name cannot contain any special characters!"
+        }
     },
     last_name: { 
         type: String, 
         required: [true, "Last Name is required!"], 
-        minlength: [2, "Last Name must be longer than 2 characters!"] 
+        minlength: [2, "Last Name must be longer than 2 characters!"],
+        validate: {
+            validator: function(lname){
+                return /^[a-z ,.'-]+$/i.test(lname);
+            },
+            message: "Last Name cannot contain any special characters!"
+        }
     },
     email: { 
         type: String, 
@@ -53,12 +65,18 @@ var UserSchema = new mongoose.Schema({
             validator: function(pw){
                 return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/.test(pw);
             },
-            message: "Password failed the validation, you must have at least 1 number, 1 uppercase and 1 special character."
+            message: "Password must have at least 1 number, 1 uppercase and 1 special character."
         }
     },
     birthday: { 
         type: Date,
-        required: [true, "Birthday is required!"]
+        required: [true, "Birthday is required!"],
+        validate: {
+            validator: function(value) {
+                return value.getTime() < new Date().getTime();
+            },
+            message: "Invalid Birthday! Time travelers are not welcome here!"
+        }
      },
      created_at: { 
          type: Date, 
@@ -82,6 +100,7 @@ app.get('/', function (req, res) {
 
 app.post('/registeruser', function (req, res) {
     console.log(req.body);
+    // VALIDATE FOR EXISTING EMAIL
     if(req.body.password == req.body.confirm_pw){
         console.log(req);
         console.log("**passwords:", req.body.password, req.body.confirm_pw); // BOTH ARE UNDEFINED? THE FUCK THO
@@ -101,7 +120,7 @@ app.post('/registeruser', function (req, res) {
                 // ONLY THE REQUIRED ERRORS ARE SHOWING
                 User.find({}).exec(function(err){
                     if(err) throw err;
-                    res.render("index", { errors: user.errors, user})
+                    res.render("index", { errors: user.errors })
                 })
             }
             else {
