@@ -28,8 +28,7 @@ app.get('/', function(req, res) {
     console.log("THIS BITCH!");
     User.find({}, function(err, users){
         if(err){
-           console.log("Returned error", err);
-           res.json({message: "Error", error: err})
+           res.json({message: "Error!", error: err})
         }
         else {
            res.json({ birthday_boys_and_girls: users})
