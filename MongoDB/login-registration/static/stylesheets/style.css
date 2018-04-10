@@ -1,0 +1,28 @@
+* {
+    color: rgb(255, 95, 122);
+}
+h1 {
+    color: rgb(255, 95, 122);
+    font-weight: bold;    
+}
+hr {
+    border:none;
+    border-top:5px dotted orange;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+}
+button.btn {
+    background-color: yellowgreen;
+    border: none;
+}
+button.btn:hover {
+    background-color: skyblue;
+    border: none;
+}
+h2.success {
+    color: yellowgreen;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 8px;
+}

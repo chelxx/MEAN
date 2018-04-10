@@ -1,0 +1,26 @@
+
+TO START A NEW PROJECT:
+
+mkdir *project_name*
+cd *project_name*
+
+npm init -y
+
+npm install body-parser --save
+npm install ejs --save
+npm install mongoose --save
+npm install express --save
+npm install express-session --save
+npm install bcrypt-as-promised --save
+npm install socket.io --save
+
+mkdir static
+
+mkdir views
+
+touch server.js
+
+// THE END
+
+// Notes:
+// Only npm install the modules you need
