@@ -72,8 +72,8 @@ var UserSchema = new mongoose.Schema({
         type: Date,
         required: [true, "Birthday is required!"],
         validate: {
-            validator: function(value) {
-                return value.getTime() < new Date().getTime();
+            validator: function(bday) {
+                return bday.getTime() < new Date().getTime();
             },
             message: "Invalid Birthday! Time travelers are not welcome here!"
         }
@@ -81,7 +81,8 @@ var UserSchema = new mongoose.Schema({
      created_at: { 
          type: Date, 
          default: Date.now 
-    },
+    }
+    // USING TIMESTAMP TRUE DOES NOT WORK FOR ME?? IS IT MY F UP SYNTAX??
 })
 
 mongoose.model('User', UserSchema);
