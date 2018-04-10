@@ -1,0 +1,1 @@
+Hey, wassup? This is the repository for all the MEAN Assignments I've done during the time when I got lost in the Twilight Zone a.k.a. Coding Dojo (this is a good thing, by the way). This is my third and last stack! Huzzah!
