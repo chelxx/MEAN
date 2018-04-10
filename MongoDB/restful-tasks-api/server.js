@@ -39,7 +39,7 @@ app.get('/tasks', function(req, res) {
     })
 })
 
-app.get('/tasks/:id', function(req, res){
+app.get('/viewtask/:id', function(req, res){
     Task.findOne({ _id: req.params.id }, function(err, task){
         if(err){
 			res.json({message: "Error!", error: err})
@@ -63,19 +63,25 @@ app.post('/newtask', function(req,res){
 	})
 })
 
-app.put('/task/:id', function(req,res){
-	var task = Task.update({ _id: req.params.id }, { title:req.body.title, description: req.body.description, completed: req.body.completed }, function(err){
+app.put('/updatetask/:id', function(req,res){
+	var task = Task.update({ _id: req.params.id }, { title:req.body.title, description: req.body.description, completed: req.body.completed }, function(err, tasks){
 		if(err){
 			res.json({message: "Error!", error: err})
-		}
+        }
+        else {
+            res.json({message: "Success!", body: tasks})
+        }
 	})
 })
 
-app.delete('/task/:id', function(req,res){
-	Task.remove({ _id: req.params.id }, function(err){
+app.delete('/deletetask/:id', function(req,res){
+	Task.remove({ _id: req.params.id }, function(err, tasks){
 		if(err){
 			res.json({message: "Error!", error: err})
-		}
+        }
+        else {
+            res.json({message: "Success!", body: tasks})
+        }
 	})
 })
 
