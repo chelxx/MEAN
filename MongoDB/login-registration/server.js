@@ -184,3 +184,7 @@ app.post('/logout', function (req, res) {
 var server = app.listen(6789, function() {
     console.log('Listening on port 6789!');
 });
+
+// Notes:
+// This is the REGEX for International Names:
+// /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
