@@ -18,6 +18,8 @@ mkdir static
 
 mkdir views
 
+touch server.js
+
 nodemon server.js 
 
 // THE END
