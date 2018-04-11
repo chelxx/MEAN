@@ -46,3 +46,22 @@ Start and EXPRESS Project
 Start an ANGULAR Project
 Drag & Drop the ANGULAR Project into the EXPRESS Project
 
+ADD A SERVICE:
+
+1. CREATE
+ng g s "service_name*
+
+2. REGISTER
+go to app.module.ts
+import
+include it in Providers
+
+3. HTTPCLIENT
+go to app.module.ts
+import
+include it in Imports
+
+4. DEPENDENCY INJECTION
+import 
+make an attribute
+
