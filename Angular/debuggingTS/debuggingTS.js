@@ -157,5 +157,10 @@ setTimeout(function () {
 // Notes:
 // I did the following to run this file...
 // sudo npm install -g typescript
+// tsc debuggingTS.ts
 // This will create a .js file
 // nodemon the .js file
+// OR 
+// EVEN SIMPLER
+// Use Typescript Playground
+// https://www.typescriptlang.org/play/

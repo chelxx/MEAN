@@ -64,7 +64,7 @@ app.post('/createmessage', function(req, res){
 app.post('/createcomment/:id', function(req, res){
     Message.findOne({_id: req.params.id}, function(err, message) {
     var comment = new Comment({ cmntname: req.body.cmntname, comment: req.body.comment })
-    comment._message = message._id;
+    coessage._id;
     message.comments.push(comment);
     comment.save(function(err){
         message.save(function(err){
