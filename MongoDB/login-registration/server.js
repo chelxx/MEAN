@@ -100,43 +100,50 @@ app.get('/', function (req, res) {
 })
 
 app.post('/registeruser', function (req, res) {
-    console.log(req.body);
-    // VALIDATE FOR EXISTING EMAIL
-    if(req.body.password == req.body.confirm_pw){
-        console.log(req);
-        console.log("**passwords:", req.body.password, req.body.confirm_pw); // BOTH ARE UNDEFINED? THE FUCK THO
-        console.log("passwords match!");        
-        var user = new User ({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            birthday: req.body.birthday,
-            email: req.body.email,
-            password: req.body.password
-        })
-        console.log("**form results:", req.body.first_name, req.body.last_name, req.body.email);
-        user.save(function(err){
-            if (err) {
-                console.log("something went wrong, dude!");
-                // IS THIS THE RIGHT WAY TO SHOW ERRORS?
-                // ONLY THE REQUIRED ERRORS ARE SHOWING
-                User.find({}).exec(function(err){
-                    if(err) throw err;
-                    res.render("index", { errors: user.errors })
+    User.find({email: req.body.email}, function(err,user){
+        if(user == 0)
+        {
+            console.log("user is null!")
+            if(req.body.password == req.body.confirm_pw){
+                console.log("**passwords:", req.body.password, req.body.confirm_pw); // BOTH ARE UNDEFINED? THE FUCK THO
+                console.log("passwords match!");        
+                var user = new User ({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    birthday: req.body.birthday,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+                console.log("**form results:", req.body.first_name, req.body.last_name, req.body.email);
+                user.save(function(err){
+                    if (err) {
+                        console.log("something went wrong, dude!");
+                        User.find({}).exec(function(err){
+                            if(err) throw err;
+                            res.render("index", { errors: user.errors })
+                        })
+                    }
+                    else {
+                        console.log("successfully registered a user!");
+                        req.session.userID = user._id;
+                        console.log(req.session.userID)
+                        console.log(user.first_name);
+                        res.render('success', { user });
+                    }
                 })
             }
             else {
-                console.log("successfully registered a user!");
-                req.session.userID = user._id;
-                console.log(req.session.userID)
-                console.log(user.first_name);
-                res.render('success', { user });
+                console.log("passwords do not match!");
+                res.redirect('/');
             }
-        })
-    }
-    else {
-        console.log("passwords do not match!");
-        res.redirect('/');
-    }
+        }
+        else {
+            console.log("user is not null!");
+            let errors = [{'message': ''}];
+            errors[0]['message'] = 'Email Address already exists!';
+            res.render('index', { errors: errors });
+        }
+    })
 })
 
 app.post('/loginuser', function (req, res) {
