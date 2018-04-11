@@ -1,5 +1,5 @@
 
-TO START A NEW PROJECT:
+EXPRESS PROJECT:
 
 mkdir *project_name*
 cd *project_name*
@@ -18,9 +18,31 @@ mkdir static
 
 mkdir views
 
-touch server.js
+nodemon server.js 
 
 // THE END
 
 // Notes:
 // Only npm install the modules you need
+
+
+ANGULAR PROJECT:
+
+ng new *project_name*
+cd *project_name*
+ng build --watch
+
+ng serve
+
+EXPRESS + ANGULAR:
+
+Method #1:
+Start an EXPRESS Proje
+cd into EXPRESS Project
+Start an ANGULAR Project in the root directory of the EXPRESS Project
+
+Method #2:
+Start and EXPRESS Project
+Start an ANGULAR Project
+Drag & Drop the ANGULAR Project into the EXPRESS Project
+
