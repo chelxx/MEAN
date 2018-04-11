@@ -7,13 +7,14 @@ export class HttpService {
   constructor( private _http: HttpClient ) {
     this.getPokemon();
     this.getCommonAbilities();
-    // this.getNotCommonAbilities();
+    this.getSharedAbilityUsers();
   }
 
   getPokemon(){
     let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-    bulbasaur.subscribe(data => 
-      console.log("Bulbasaur in JSON:", data));
+    bulbasaur.subscribe(data => {
+      console.log("Bulbasaur in JSON:", data)
+    })
   }
   getCommonAbilities(){
     let pokemonlist = this._http.get('https://pokeapi.co/api/v2/ability/34/');
@@ -25,8 +26,18 @@ export class HttpService {
       }
     })
   }
-  getNotCommonAbilities(){
+  getSharedAbilityUsers(){
     let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-    
+    bulbasaur.subscribe(data => {
+      for(var i = 0; i < data["abilities"].length; i++){
+        var hipsterpokemon = data["abilities"][i].ability.url;
+        console.log(hipsterpokemon);
+        var hipster = this._http.get(hipsterpokemon);
+        var abs = hipster.subscribe(function (data) 
+        {
+          console.log("There are", data["pokemon"].length ,"pokemon that share the", data["name"], "ability as Bulbasaur!");
+        })
+      }
+    })
   }
 }
