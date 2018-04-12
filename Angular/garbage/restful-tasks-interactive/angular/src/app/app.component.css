@@ -1,0 +1,53 @@
+* {
+    color: rgb(255, 95, 122);
+    text-align: center;
+}
+h1 {
+    color: rgb(255, 95, 122);
+    font-weight: bold;    
+}
+hr {
+    border:none;
+    border-top:5px dotted orange;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+}
+button.btn {
+    background-color: yellowgreen;
+    border: none;
+}
+button.btn:hover {
+    background-color: skyblue;
+    border: none;
+}
+h2 {
+    color: yellowgreen;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 4px;
+}
+h3{
+    color: rgb(255, 95, 122);
+    text-align: center;
+    letter-spacing: 3px;
+}
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 95, 122);
+    color: white;
+    padding: 10px;
+}
+/* input {
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid rgb(255, 95, 122);
+    margin-bottom: 5px;
+} */
+select option {
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid rgb(255, 95, 122);
+    margin-bottom: 5px;
+}

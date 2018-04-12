@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <!-- CLICK ON BUTTON TO VIEW ALL TASKS -->
+  <h1>RESTFUL TASKS API</h1>
+  <h2>ALL THE TASKS:</h2>
+    <button (click)="onButtonClick()">CLICK TO GET ALL TASKS!</button>
+    <div *ngIf="banana == true">
+      <h3 *ngFor="let task of tasks">{{task.title}} - {{task.description}}</h3>
+    </div>
+</div>
+<hr>
+<div>
+  <!-- CLICK ON BUTTON TO VIEW TASK BY ID -->
+  <form (submit)="onSubmit($event)">
+    <select name="taskid" [(ngModel)]="taskid">
+      <option *ngFor="let task of tasks" value="{{task._id}}" name="taskidhtml">{{task._id}}</option>      
+    </select>
+    <br>
+    <button type="submit">CLICK TO GET TASK BY ID!</button>    
+  </form>
+  <div *ngIf="notbanana == true">
+    <h3 *ngIf="this.task">{{task.title}} - {{task.description}}</h3>
+  </div>
+</div>
