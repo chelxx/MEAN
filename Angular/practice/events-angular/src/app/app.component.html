@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<button (click)="onButtonClick()" >Click me!</button>
+<!-- RESULT IN CONSOLE: -->
+<!-- Click event is working -->
+
+<button (click)="onButtonClickParam(5)">Click me!</button>
+<!-- RESULT IN CONSOLE: -->
+<!-- Click event is working with num param: 5 -->
+
+<button (click)="onButtonClickParams(5, 'hello')">Click me!</button>
+<!-- RESULT IN CONSOLE: -->
+<!-- Click event is working with num param: 5 and str param: hello -->
+
+<button (click)="onButtonClickEvent($event)">Click me!</button>
+<!-- RESULT IN CONSOLE: -->
+<!-- Click event is working with event:  MouseEvent {isTrusted: true, screenX: 2625, screenY: 139, clientX: 254, clientY: 25, …} -->
