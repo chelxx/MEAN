@@ -32,3 +32,22 @@ h3{
     text-align: center;
     letter-spacing: 3px;
 }
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 95, 122);
+    color: white;
+    padding: 10px;
+}
+/* input {
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid rgb(255, 95, 122);
+    margin-bottom: 5px;
+} */
+select option {
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid rgb(255, 95, 122);
+    margin-bottom: 5px;
+}
