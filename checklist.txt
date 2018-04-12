@@ -51,7 +51,7 @@ Drag & Drop the ANGULAR Project into the EXPRESS Project
 ADD A SERVICE:
 
 1. CREATE
-ng g s "service_name*
+ng g s http
 
 2. REGISTER
 go to app.module.ts

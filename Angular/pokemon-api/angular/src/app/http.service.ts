@@ -35,9 +35,11 @@ export class HttpService {
         var hipster = this._http.get(hipsterpokemon);
         var abs = hipster.subscribe(function (data) 
         {
-          console.log("There are", data["pokemon"].length ,"pokemon that share the", data["name"], "ability as Bulbasaur!");
+          console.log("There are", data["pokemon"].length ,"pokemon that share the same", data["name"], "ability as Bulbasaur!");
         })
       }
     })
   }
+  // I still need to add this part....
+  //  List the other abilities that each of these other Pokemon knows that your favorite does not. For example, your result could include, "Oddish knows run-away."
 }
