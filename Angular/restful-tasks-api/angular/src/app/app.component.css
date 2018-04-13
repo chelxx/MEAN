@@ -27,7 +27,7 @@ h2 {
 }
 h3{
     color: rgb(255, 95, 122);
-    font-weight: 300;
+    font-weight: bold;
 }
 button {
     border: none;
@@ -49,10 +49,14 @@ select option {
     margin-bottom: 5px;
 }
 a {
-    color: orange;
+    color: rgb(62, 194, 247);
     font-weight: bolder;
     font-style: italic;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-decoration: none;
+    cursor: hand;
+    /* text-decoration: none; */
+}
+a:hover {
+    cursor: hand;
 }

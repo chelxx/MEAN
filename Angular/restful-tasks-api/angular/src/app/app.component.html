@@ -3,21 +3,13 @@
   <!-- CLICK ON BUTTON TO VIEW ALL TASKS -->
   <h1>RESTFUL TASKS API</h1>
   <hr>
-  <h2>GET ALL TASKS:</h2>
-    <button (click)="getAllTasks()">CLICK TO GET ALL TASKS!</button>
-    <div *ngIf="banana == true">
+  <h2>ALL TASKS:</h2>
+    <div *ngFor="let task of tasks">
+      <h3><li>{{task.title}} - {{task.description}} - {{task._id}}</li></h3>
+      <a (click)="deleteThis(task._id)">DELETE</a>-OR-<a (click)="editOpen(task._id)">SHOW EDIT FORM</a>
       <br>
-      <div *ngFor="let task of tasks">
-        <h3><li>{{task.title}} - {{task.description}}</li></h3>
-        <form (submit)="deleteTask(task._id)">
-          <button type="submit">DELETE!</button>
-        </form>
-        <form (submit)="editTask(task._id)">
-            <button type="submit">EDIT!</button>
-          </form>
-      </div>
     </div>
-    <br><br>
+  <br><br>
 </div>
 <hr>
 <div>
@@ -32,28 +24,20 @@
   </form>
   <br><br>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div>
-  CLICK ON BUTTON TO VIEW TASK BY ID
-  <form (submit)="getOneTask()">
-    <select name="taskid" [(ngModel)]="taskid">
-      <option *ngFor="let task of tasks" value="{{task._id}}" name="taskidhtml">{{task._id}}</option>      
-    </select>
-    <br>
-    <button type="submit">CLICK TO GET TASK BY ID!</button>    
+<hr>
+<div *ngIf="banana == true">
+  <!-- NEEDS WORK! -->
+  <h2>EDIT TASK:</h2>
+  <form (submit)="editThis(task._id)" *ngIf="this.task">
+    <p> {{ edTask | json }} </p>
+    <label>Title: </label>
+    <input type="text" name="edTask.title" [(ngModel)]="edTask.title" value="{{ task.title }}" />
+    <label>Description: </label>
+    <input type="text" name="edTask.description" [(ngModel)]="edTask.description" value="{{ task.description }}" />
+    <button type="submit">EDIT TASK!</button>
   </form>
-  <div *ngIf="notbanana == true">
-    <h3 *ngIf="this.task"><li>{{task.title}} - {{task.description}}</li></h3>
-  </div>
-</div> -->
+  <br><br>
+</div>
+
+<!-- NOTES -->
+<!-- WHY IS THE TASK._ID IN THE DELETE COMING BACK UNDEFINED?! -->

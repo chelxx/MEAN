@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   banana = false;
   notbanana = false;
   newTask: any;
+  edTask: any;
   taskid;
   
   getAllTasks(): void { 
@@ -38,28 +39,35 @@ export class AppComponent implements OnInit {
       this.newTask = { title: "", description: "" }
     })
   }
-
-  //DOES NOT WORK YET
-  deleteTask(): void {
-    console.log(this.taskid);
-    let observable = this._httpService.deleteTask(this.taskid);
+  deleteThis(taskid): void {
+    console.log(taskid);
+    let observable = this._httpService.deleteTask(taskid);
     observable.subscribe(data => {
       console.log("DELETE!", data);
     })
   }
-  editTask(): void {
-    this.task = this.task;
-    let observable = this._httpService.editTask(this.task, this.taskid);
+  editOpen(taskid): void {
+    this.banana = true;    
+    let observable = this._httpService.getTaskByID(taskid);
+    observable.subscribe(data => {
+       console.log("ONE TASK!", data)
+       this.task = data['result'];
+       console.log("TEST!", this.task);
+    });
+  }
+  editThis(taskid): void {
+    console.log(taskid, this.edTask)
+    let observable = this._httpService.editTask(taskid, this.edTask);
     observable.subscribe(data => {
       console.log("EDIT!", data);
     })
   }
-  // END
 
   constructor(private _httpService: HttpService) { }
   ngOnInit() {
     this.getTasksFromService();
     this.newTask = { title: "", description: "" }
+    this.edTask = { title: "", description: "" }
   }
   getTasksFromService(){
     let observable = this._httpService.getTasks();
