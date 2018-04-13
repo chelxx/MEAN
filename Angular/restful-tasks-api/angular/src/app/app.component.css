@@ -1,6 +1,5 @@
 * {
     color: rgb(255, 95, 122);
-    text-align: center;
 }
 h1 {
     color: rgb(255, 95, 122);
@@ -24,20 +23,18 @@ button.btn:hover {
 h2 {
     color: yellowgreen;
     font-weight: bold;
-    text-align: center;
     letter-spacing: 4px;
 }
 h3{
     color: rgb(255, 95, 122);
-    text-align: center;
-    letter-spacing: 3px;
+    font-weight: 300;
 }
 button {
     border: none;
     border-radius: 5px;
     background-color: rgb(255, 95, 122);
     color: white;
-    padding: 10px;
+    padding: 5px;
 }
 /* input {
     border-radius: 5px;
@@ -50,4 +47,12 @@ select option {
     height: 30px;
     border: 1px solid rgb(255, 95, 122);
     margin-bottom: 5px;
+}
+a {
+    color: orange;
+    font-weight: bolder;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
 }

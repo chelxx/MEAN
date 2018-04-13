@@ -2,16 +2,51 @@
 <div>
   <!-- CLICK ON BUTTON TO VIEW ALL TASKS -->
   <h1>RESTFUL TASKS API</h1>
-  <h2>ALL THE TASKS:</h2>
-    <button (click)="onButtonClick()">CLICK TO GET ALL TASKS!</button>
+  <hr>
+  <h2>GET ALL TASKS:</h2>
+    <button (click)="getAllTasks()">CLICK TO GET ALL TASKS!</button>
     <div *ngIf="banana == true">
-      <h3 *ngFor="let task of tasks">{{task.title}} - {{task.description}}</h3>
+      <br>
+      <div *ngFor="let task of tasks">
+        <h3><li>{{task.title}} - {{task.description}}</li></h3>
+        <form (submit)="deleteTask(task._id)">
+          <button type="submit">DELETE!</button>
+        </form>
+        <form (submit)="editTask(task._id)">
+            <button type="submit">EDIT!</button>
+          </form>
+      </div>
     </div>
+    <br><br>
 </div>
 <hr>
 <div>
-  <!-- CLICK ON BUTTON TO VIEW TASK BY ID -->
-  <form (submit)="onSubmit($event)">
+  <h2>CREATE A NEW TASK:</h2>
+  <form (submit)="createTask()">
+    <p> {{ newTask | json }} </p>
+    <label>Title: </label>
+    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+    <label>Description: </label>
+    <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+    <button type="submit">CREATE TASK!</button>
+  </form>
+  <br><br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+  CLICK ON BUTTON TO VIEW TASK BY ID
+  <form (submit)="getOneTask()">
     <select name="taskid" [(ngModel)]="taskid">
       <option *ngFor="let task of tasks" value="{{task._id}}" name="taskidhtml">{{task._id}}</option>      
     </select>
@@ -19,6 +54,6 @@
     <button type="submit">CLICK TO GET TASK BY ID!</button>    
   </form>
   <div *ngIf="notbanana == true">
-    <h3 *ngIf="this.task">{{task.title}} - {{task.description}}</h3>
+    <h3 *ngIf="this.task"><li>{{task.title}} - {{task.description}}</li></h3>
   </div>
-</div>
+</div> -->

@@ -15,4 +15,13 @@ export class HttpService {
   getTaskByID(taskid) {
     return this._http.get(`/viewtask/${taskid}`);
   }
+  addTask(newTask){
+    return this._http.post('/newtask', newTask);
+  }
+  deleteTask(taskid){
+    return this._http.delete(`/deletetask/${taskid}`);
+  }
+  editTask(taskid, task){
+    return this._http.put(`/updatetask/${taskid}`, task);
+  }
 }
