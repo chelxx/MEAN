@@ -68,6 +68,13 @@ import
 make an attribute
 
 ********************
+ng g c *component_name*
+
+ng new sample-app --routing
+
+
+
+********************
 
 {
   "name": "pokemon-api",
