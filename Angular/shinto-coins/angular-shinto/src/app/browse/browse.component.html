@@ -1,3 +1,24 @@
-<p>
-  browse works!
-</p>
+<h2>Browse the Ledger</h2>
+<p>Here you can browse all ShintoCoin transactions.</p>
+<div *ngIf="ledger.length > 0">
+  <h3>SHINTO COIN LEDGER</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ACTION</th>
+        <th>AMOUNT</th>
+        <th>VALUE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ledge of ledger">
+        <td>{{ ledge.action }}</td>
+        <td>{{ ledge.amount }}</td>
+        <td>{{ ledge.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="ledger.length == 0">
+  <h3>LEDGER IS EMPTY!</h3>
+</div>

@@ -19,6 +19,10 @@ export class SellComponent implements OnInit {
     this.value = this._httpService.getValue();
   }
   sellShintoCoin() {
-    
+    console.log("ANSWER:", this.answer)
+    this._httpService.sellCoin(this.answer);
+    this.balance = this._httpService.getBalance();
+    this.value = this._httpService.getValue();
+    this.answer;
   }
 }

@@ -11,23 +11,6 @@ export class HttpService {
   constructor(private _http: HttpClient) {
   }
   
-  mineCoin() {
-    var transaction = {action: "mine", amount: 1, value: this.value}
-    this.ledger.push(transaction);
-    this.balance +=1;
-    this.value +=1;
-    console.log("MINE LEDGER:", this.ledger);
-    console.log("MINE BALANCE:", this.balance);
-  }
-
-  buyCoin(num) {
-    var transaction = {action: "buy", amount: num, value: this.value}
-    this.ledger.push(transaction);
-    this.value += num;
-    this.balance += num;
-    console.log("BUY LEDGER:", this.ledger);
-    console.log("BUY BALANCE:", this.balance);
-  } 
   getValue() {
     return this.value;
   }
@@ -37,6 +20,22 @@ export class HttpService {
   getLedger() {
     return this.ledger;
   }
+  mineCoin() {
+    var transaction = {action: "mine", amount: 1, value: this.value}
+    this.ledger.push(transaction);
+    this.balance +=1;
+    this.value +=1;
+    console.log("MINE LEDGER:", this.ledger);
+    console.log("MINE BALANCE:", this.balance);
+  }
+  buyCoin(num) {
+    var transaction = {action: "buy", amount: num, value: this.value}
+    this.ledger.push(transaction);
+    this.value += num;
+    this.balance += num;
+    console.log("BUY LEDGER:", this.ledger);
+    console.log("BUY BALANCE:", this.balance);
+  } 
   sellCoin(num) {
     let transaction = {action: "sell", amount: num, value: this.value}
     this.ledger.push(transaction);
