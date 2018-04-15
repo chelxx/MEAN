@@ -9,6 +9,7 @@ import { MineComponent } from './mine/mine.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { FormsModule } from '@angular/forms'; 
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpService } from './http.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
     HttpService,

@@ -1,2 +1,9 @@
 <h2>Mine ShintoCoins</h2>
 <p>Here you can mine ShintoCoins by being the first to solve the algorithm.</p>
+<p>What is the 7th Fibonacci sequence number?</p>
+<form (submit)="mineShintoCoin()">
+  <input type="number" name="answer" placeholder="Enter Answer Here" [(ngModel)]="answer">
+  <button type="submit">MINE</button>
+</form>
+<br>
+{{ result }}

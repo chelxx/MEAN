@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-sell',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellComponent implements OnInit {
 
-  constructor() { }
+  answer: number;
+  value = 0;
+  balance = 0;
+
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.balance = this._httpService.getBalance();
+    this.value = this._httpService.getValue();
   }
-
+  sellShintoCoin() {
+    
+  }
 }

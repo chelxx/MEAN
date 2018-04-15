@@ -4,20 +4,49 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class HttpService {
 
-  browseledger = [];
-  transaction: any;
-  shintoCoin = 0;
-  shintoValue = 1;
+  ledger = [];
+  balance = 0;
+  value = 1;
 
   constructor(private _http: HttpClient) {
-    this.transaction = { id: 0, action:"", numberCoins:0, valueCoins:0 }
   }
-  newTransaction(method, num){
-    this.transaction.id = Math.trunc(Math.random()*1000+1)
-    this.transaction.action = method
-    this.transaction.numberCoins = num
-    this.transaction.valueCoins = this.shintoValue
-    this.browseledger.push(this.transaction)
-    this.transaction = { id: 0, action:"", numberCoins:0, valueCoins:0}
+  
+  mineCoin() {
+    var transaction = {action: "mine", amount: 1, value: this.value}
+    this.ledger.push(transaction);
+    this.balance +=1;
+    this.value +=1;
+    console.log("MINE LEDGER:", this.ledger);
+    console.log("MINE BALANCE:", this.balance);
+  }
+
+  buyCoin(num) {
+    var transaction = {action: "buy", amount: num, value: this.value}
+    this.ledger.push(transaction);
+    this.value += num;
+    this.balance += num;
+    console.log("BUY LEDGER:", this.ledger);
+    console.log("BUY BALANCE:", this.balance);
+  } 
+  getValue() {
+    return this.value;
+  }
+  getBalance() {
+    return this.balance;
+  }
+  getLedger() {
+    return this.ledger;
+  }
+  sellCoin(num) {
+    let transaction = {action: "sell", amount: num, value: this.value}
+    this.ledger.push(transaction);
+    this.value -= num;
+    this.balance -= num;
+    console.log("SELL LEDGER:", this.ledger);
+    console.log("SELL BALANCE", this.balance);
   }
 }
+// NOTES:
+// INSTRUCTIONS UNCLEAR AS TO THE VALUE OF THE SHINTO COIN!!!!
+// DO YOU WANT THE VALUE TO INCREMENT PER OVERALL PURCHASE OR PER COIN PURCHASED?????
+// PFT!!!
