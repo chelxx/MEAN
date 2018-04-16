@@ -25,6 +25,7 @@ var AuthorSchema = new mongoose.Schema({
         required: [true, "First Name is required!"],
         minlength: [2, "First Name must be longer than 2 characters!"],
         validate: {
+            runValidator: true,
             validator: function(fname){
                 return /^[a-z ,.'-]+$/i.test(fname);
             },
@@ -67,45 +68,40 @@ app.get('/author/:id', function(req, res){
 app.post('/author', function(req, res){
     var author = new Author({ name: req.body.name });
     author.save(function(err){
-        if(err){
-            if(err) {
-                console.log("BACKEND! SOMETHING WENT WRONG CREATING THE AUTHOR!", err);
-                res.json({message: "Error!", error: err});
-            }
-            else {
-                console.log("SUCCESS! CREATED AN AUTHOR!")
-                res.json({message: "Success!", author: author});
-            }
+        if(err) {
+            console.log("BACKEND! SOMETHING WENT WRONG CREATING THE AUTHOR!", err);
+            res.json({message: "Error!", error: err});
         }
+        else {
+            console.log("SUCCESS! CREATED AN AUTHOR!")
+            res.json({message: "Success!", author: author});
+        }
+        
     })
 })
 
 app.put('/author/:id', function(req, res){
     var author = Author.update({ _id: req.params.id }, { name: req.body.name }, function(err, author){
-        if(err){
-            if(err) {
-                console.log("BACKEND! SOMETHING WENT WRONG UPDATING THE AUTHOR!", err);
-                res.json({message: "Error!", error: err});
-            }
-            else {
-                console.log("SUCCESS! UPDATED THE AUTHOR!")
-                res.json({message: "Success!", author: author});
-            }
+        if(err) {
+            console.log("BACKEND! SOMETHING WENT WRONG UPDATING THE AUTHOR!", err);
+            res.json({message: "Error!", error: err});
+        }
+        else {
+            console.log("SUCCESS! UPDATED THE AUTHOR!")
+            res.json({message: "Success!", author: author});
         }
     })
 })
 
 app.delete('/author/:id', function(req,res){
 	Author.remove({ _id: req.params.id }, function(err, author){
-        if(err){
-            if(err) {
-                console.log("BACKEND! SOMETHING WENT WRONG DELETING THE AUTHOR!", err);
-                res.json({message: "Error!", error: err});
-            }
-            else {
-                console.log("SUCCESS! DELETED THE AUTHOR!")
-                res.json({message: "Success!", author: author});
-            }
+        if(err) {
+            console.log("BACKEND! SOMETHING WENT WRONG DELETING THE AUTHOR!", err);
+            res.json({message: "Error!", error: err});
+        }
+        else {
+            console.log("SUCCESS! DELETED THE AUTHOR!")
+            res.json({message: "Success!", author: author});
         }
     })
 })
@@ -119,3 +115,8 @@ app.all("*", (req,res,next) => {
 var server = app.listen(6789, function() {
     console.log("Listening on port 6789!");
 });
+
+// NOTES:
+// HOW TO MAKE SO THAT WHEN A FUNCTION IS DONE RUNNING, IT REDIRECTS TO THE HOME PAGE
+// PROBLEM: I CAN ADD SPECIAL CHARS WHEN EDITING. THE FUCK BRO
+// HOW DO I SHOW BACKEND VALIDATIONS ON THE PAGE??
