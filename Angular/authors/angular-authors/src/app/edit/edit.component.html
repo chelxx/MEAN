@@ -1,0 +1,7 @@
+<hr>
+<h2>EDIT AUTHOR:</h2>
+<form (submit)="editAuthor()">
+  <label>Author Name: </label>
+  <input type="text" name="edAuthor.name" [(ngModel)]="edAuthor.name" value="{{ author }}"/>
+  <button type="submit" class="btn">EDIT AUTHOR!</button>
+</form>
