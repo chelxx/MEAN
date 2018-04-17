@@ -48,8 +48,7 @@ var AuthorSchema = new mongoose.Schema({
 mongoose.model('Author', AuthorSchema);
 var Author = mongoose.model('Author');
 
-// ******************** //
-
+// GET ALL AUTHORS
 app.get('/api/authors', function(req, res){
     Author.find({}).exec(function(err, authors){
         if(err) {
@@ -63,6 +62,7 @@ app.get('/api/authors', function(req, res){
     })
 })
 
+// GET AUTHOR BY ID
 app.get('/api/author/:id', function(req, res){
     Author.findOne({ _id: req.params.id }).exec(function(err, author){
         if(err) {
@@ -76,6 +76,7 @@ app.get('/api/author/:id', function(req, res){
     })
 })
 
+// CREATE AUTHOR
 app.post('/api/author', function(req, res){
     var author = new Author({ name: req.body.name });
     console.log(author)
@@ -93,6 +94,7 @@ app.post('/api/author', function(req, res){
     })
 })
 
+// UPDATE AUTHOR
 app.put('/api/author/:id', function(req, res){
     var author = Author.findOne( {_id: req.params.id}).exec(function(err, author){
     author.name = req.body.name;
@@ -109,7 +111,7 @@ app.put('/api/author/:id', function(req, res){
 })
 })
 
-
+// DELETE AUTHOR
 app.delete('/api/author/:id', function(req,res){
 	Author.remove({ _id: req.params.id }, function(err, author){
         if(err) {
@@ -133,6 +135,7 @@ app.delete('/api/author/:id', function(req,res){
 
 // ********** QUOTES ********** //
 
+// GET ALL QUOTES
 app.get('/api/quotes', function(req, res){
     Author.find({}).exec(function(err, quotes){
         if(err) {
@@ -146,6 +149,7 @@ app.get('/api/quotes', function(req, res){
     })
 })
 
+// CREATE QUOTE
 app.put('/api/quote/:id', function(req, res){
     if(req.body.quote.length < 2) {
         console.log("BACKEND! ADDING A QUOTE TOO SHORT!");
@@ -165,6 +169,7 @@ app.put('/api/quote/:id', function(req, res){
     }
 })
 
+// GET ALL AUTHOR'S QUOTES
 app.get('/api/allquotes/:id', function(req, res) {
     Author.find({ _id: req.params.id }).exec(function(err, authors){
         if(err) {
@@ -178,6 +183,7 @@ app.get('/api/allquotes/:id', function(req, res) {
     })
 })
 
+// DELETE QUOTE
 app.delete('/api/quote/:id/:quoteid', function(req, res) {
     console.log("BACKEND! DELETING A QUOTE!", req.params.id, req.params.quoteid);
     Author.update({ _id: req.params.id }, { $pull: { quotes: { _id: req.params.quoteid }}}, function(err) {
@@ -200,6 +206,7 @@ app.delete('/api/quote/:id/:quoteid', function(req, res) {
     })
 })
 
+// VOTE UP
 app.put('/api/voteup/:id/:quoteid', function(req, res) {
     console.log(req.params.id)
     console.log(req.params.quoteid)    
@@ -232,6 +239,7 @@ app.put('/api/voteup/:id/:quoteid', function(req, res) {
     })
 })
 
+// VOTE DOWN
 app.put('/api/votedown/:id/:quoteid', function(req, res) {
     console.log(req.params.id)
     console.log(req.params.quoteid)    
@@ -263,6 +271,8 @@ app.put('/api/votedown/:id/:quoteid', function(req, res) {
         }   
     })
 })
+
+// ******************** //
 
 app.all("*", (req,res,next) => {
     res.sendFile(path.resolve("./angular-authors/dist/index.html"))
