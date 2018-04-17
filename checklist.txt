@@ -7,9 +7,11 @@ cd *project_name*
 npm init -y
 
 npm install body-parser --save
-npm install ejs --save
 npm install mongoose --save
 npm install express --save
+npm install path --save
+
+npm install ejs --save
 npm install express-session --save
 npm install bcrypt-as-promised --save
 npm install socket.io --save
@@ -30,7 +32,7 @@ nodemon server.js
 
 ANGULAR PROJECT:
 
-ng new *project_name*
+ng new *project_name* --routingcd
 cd *project_name*
 ng build --watch
 
