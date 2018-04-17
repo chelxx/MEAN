@@ -23,7 +23,7 @@ export class AppComponent {
 
   getNotes(): void {
     this._httpService.getNotes().then(data => {
-      if(data['message'] =='Success!'){
+      if(data['message'] == 'Success!'){
         this.noteList = data['notes'];
         console.log(this.noteList)
       }
@@ -32,9 +32,12 @@ export class AppComponent {
 
   addNote(): void {
     this._httpService.addNote(this.newNote).then(data => {
-      if(data['message'] =='Success!'){
+      if(data['message'] == 'Success!'){
         this.newNote = { note: "" };
         this.getNotes();
+      }
+      else {
+        console.log("APP! ADD NOTE ERROR!")
       }
     })
   }
@@ -45,3 +48,6 @@ export class AppComponent {
     })
   }
 }
+
+// NOTES:
+// YOU CAN CREATE A BLANK NOTE THE FIRST TIME BUT CANNOT CREATE ANOTHER BLANK NOT AFTER THAT
