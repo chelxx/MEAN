@@ -5,12 +5,14 @@
     <tr>
       <th>AUTHOR</th>
       <th>QUOTE</th>
+      <th>VOTES</th>
     </tr>
   </thead>
   <tbody *ngFor="let quote of quotes">
     <tr *ngFor="let q of quote.quotes">
       <td>{{ quote.name }}</td>
       <td>{{ q.quote }}</td>
+      <td>{{ q.votes }}</td>
     </tr>
   </tbody>
 </table>
