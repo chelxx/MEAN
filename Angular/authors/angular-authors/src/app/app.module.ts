@@ -11,13 +11,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { FormsModule } from '@angular/forms'; 
 import { HttpModule } from '@angular/http';
+import { AddquoteComponent } from './addquote/addquote.component';
+import { QuotesComponent } from './quotes/quotes.component';
+import { AllquotesComponent } from './allquotes/allquotes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EditComponent,
-    AddComponent
+    AddComponent,
+    AddquoteComponent,
+    QuotesComponent,
+    AllquotesComponent
   ],
   imports: [
     BrowserModule,

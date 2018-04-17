@@ -12,6 +12,7 @@ export class EditComponent implements OnInit {
   edAuthor = { name: "" }
   author = [];
   authorid;
+  error;
 
   constructor(private _httpService: HttpService, private _router: Router, private _route: ActivatedRoute) { }
 
@@ -31,6 +32,8 @@ export class EditComponent implements OnInit {
     let observable = this._httpService.editAuthor(this.authorid, this.edAuthor);
     observable.subscribe(data => {
       console.log("EDIT!", data);
+      this.error = data['error']['message'];
+      console.log(this.error);
     })
   }
 }

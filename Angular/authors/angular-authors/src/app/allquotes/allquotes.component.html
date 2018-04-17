@@ -1,0 +1,16 @@
+<hr>  
+<h2>LIST OF ALL THE QUOTES</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>AUTHOR</th>
+      <th>QUOTE</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let quote of quotes">
+    <tr *ngFor="let q of quote.quotes">
+      <td>{{ quote.name }}</td>
+      <td>{{ q.quote }}</td>
+    </tr>
+  </tbody>
+</table>

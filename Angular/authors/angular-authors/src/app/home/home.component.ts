@@ -26,11 +26,10 @@ export class HomeComponent implements OnInit {
   }
 
   deleteAuthor(authorid): void {
-    console.log(authorid);
-    console.log("HOME! DELETING AN AUTHOR!");
-    var observable = this._httpService.deleteAuthor(authorid);
-    observable.subscribe(data => {
-      console.log("DELETE!", data);
+    this._httpService.deleteAuthor(authorid).then(data => {
+      if(data['message'] =='Success!'){
+        this.authors = data['authors'];
+      }
     })
   }
 }

@@ -1,0 +1,14 @@
+<hr>
+<h2>ADD QUOTE</h2>
+<h3>Provide a quote by {{ author }}:</h3>
+<form (submit)="addQuote()">
+  <label>Quote: </label>
+  <input type="text" name="newQuote.quote" [(ngModel)]="newQuote.quote" />
+  <button type="submit" class="btn">ADD QUOTE!</button>
+</form>
+<div *ngIf="this.error" class="error">
+  <h4>ERRORS:</h4>
+  <ul>
+    <li>{{ error }}</li>
+  </ul>
+</div>

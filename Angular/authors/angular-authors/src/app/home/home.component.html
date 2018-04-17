@@ -1,19 +1,21 @@
 <hr>  
 <h2>LIST OF ALL THE AUTHORS</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>AUTHOR</th>
-        <th>ACTION</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let author of authors">
-        <td>{{ author.name }}</td>
-        <td>
-          <button [routerLink]="['/edit', author._id]" value="{{ author._id }}" class="btn">EDIT</button>
-          <button (click)='deleteAuthor(author._id)' class="btn">DELETE</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>AUTHOR</th>
+      <th>ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let author of authors">
+      <td>{{ author.name }}</td>
+      <td>
+        <button [routerLink]="['/addq', author._id]" value="{{ author._id }}" class="btn">ADD QUOTES</button>
+        <button [routerLink]="['/quotes', author._id]" value="{{ author._id }}" class="btn">VIEW QUOTES</button>
+        <button [routerLink]="['/edit', author._id]" value="{{ author._id }}" class="btn">EDIT AUTHOR</button>
+        <button (click)='deleteAuthor(author._id)' class="btn">DELETE AUTHOR</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

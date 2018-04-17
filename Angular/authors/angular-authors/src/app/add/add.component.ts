@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -24,7 +24,7 @@ export class AddComponent implements OnInit {
       console.log("FORM DATA!", data);
       this.newAuthor = { name: "" }
       this.error = data['error']['message'];
-      console.log(this.error);
+      console.log(this.error)
     })
   }
 }

@@ -5,3 +5,9 @@
   <input type="text" name="edAuthor.name" [(ngModel)]="edAuthor.name" value="{{ author }}"/>
   <button type="submit" class="btn">EDIT AUTHOR!</button>
 </form>
+<div *ngIf="this.error" class="error">
+  <h4>ERRORS:</h4>
+  <ul>
+    <li>{{ error }}</li>
+  </ul>
+</div>
