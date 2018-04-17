@@ -12,7 +12,7 @@ export class AddComponent implements OnInit {
   newAuthor = { name: "" };
   error;
 
-  constructor(private _httpService: HttpService, private _router: Router) { }
+  constructor(private _httpService: HttpService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -21,10 +21,16 @@ export class AddComponent implements OnInit {
     console.log("ADD! ADDING AN AUTHOR!");
     var observable = this._httpService.createAuthor(this.newAuthor);
     observable.subscribe(data => {
-      console.log("FORM DATA!", data);
-      this.newAuthor = { name: "" }
-      this.error = data['error']['message'];
-      console.log(this.error)
+      if(data['message'] == "Success!") {
+        console.log("ADDQ! SUCCESSFULLY ADDED A QUOTE!");
+        this.newAuthor = { name: "" }
+        this._router.navigate(['/home']);
+      }
+      else {
+        console.log("ADDQ! SOMETHING WENT WRONG ADDING A QUOTE!");
+        this.error = data['error']['message'];
+        console.log(this.error)
+      }
     })
   }
 }

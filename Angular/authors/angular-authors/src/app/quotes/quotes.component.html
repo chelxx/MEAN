@@ -10,14 +10,13 @@
     </tr>
   </thead>
   <tbody *ngFor="let quote of quotes">
-    {{ quote }}
     <tr *ngFor="let q of quote.quotes">
       <td>"{{ q.quote }}"</td>
       <td>{{ q.votes }}</td>
       <td>
-          <button (click)='voteUp(quote._id, q._id)' class="btn">VOTE UP</button>
-          <button (click)='voteDown(quote._id, q._id)' class="btn">VOTE DOWN</button>        
-          <button (click)='deleteQuote(quote._id, q._id)' class="btn">DELETE</button>
+          <button (click)='voteUp(quote._id, q._id)' class="btn alert-success">VOTE UP</button>
+          <button (click)='voteDown(quote._id, q._id)' class="btn alert-warning">VOTE DOWN</button>        
+          <button (click)='deleteQuote(quote._id, q._id)' class="btn alert-danger">DELETE</button>
       </td>
     </tr>
   </tbody>
