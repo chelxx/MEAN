@@ -1,9 +1,10 @@
 <hr>
 <h2>ADD S NEW PRODUCT</h2>
-<form>
+<form #productForm="ngModel" (submit)="createProduct()">
   <input 
   type="text"
   name="title"
+  class="form-control"
   placeholder="PRODUCT TITLE"
   required
   minlength="3"
@@ -14,6 +15,7 @@
   <input 
   type="number"
   name="price"
+  class="form-control"
   placeholder="PRODUCT PRICE"
   required
   min="1"
@@ -23,11 +25,12 @@
   <input 
   type="text"
   name="url"
+  class="form-control"
   placeholder="PRODUCT URL"
   required
   minlength="3"
   [(ngModel)]="newProduct.url"
   #url="ngModel"
   />
-  <button></button>
+  <button [disabled]="!userForm.valid" type="submit" class="form-control">SUBMIT</button>
 </form>
