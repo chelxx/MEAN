@@ -1,5 +1,5 @@
 <h1>ANONYMOUS NOTES</h1>
-<form (submit)="addNote()">
+<form (submit)="addNote()" name="noteForm">
   <input 
   type="text"
   name="note"
@@ -7,9 +7,17 @@
   minlength="3"
   maxlength="250"
   [(ngModel)]="newNote.note"
+  #note="ngModel"  
   class="form-control"
   placeholder="ENTER ANONYMOUS NOTE HERE"
-  >
+  />
+  <div *ngIf="!note.valid">
+    <p style="color: tomato">{{ note.errors | json }}</p>
+    <p style="color: tomato">Invalid Note. Try again!</p>
+  </div>
+  <div *ngIf="note.valid">
+    <p style="color: green">Nice. Note is error-free and ready to go!</p>
+  </div>
   <button type="submit" class="btn btn-info form-control">ADD NOTE</button>
 </form>
 <hr>
@@ -29,10 +37,19 @@
     minlength="3"
     maxlength="250"
     [(ngModel)]="edNote.note"
+    #note="ngModel"
     class="form-control"
     value="{{ note }}"
-    >
+    />
     <button type="submit" class="btn btn-info form-control">EDIT NOTE</button>
   </form>
+  <div *ngIf="!note.valid">
+    <p style="color: tomato">{{ note.errors | json }}</p>
+    <p style="color: tomato">Invalid Note. Try again!</p>
+  </div>
+  <div *ngIf="note.valid">
+    <p style="color: green">Nice. Note is error-free and ready to go!</p>
+  </div>
   <button (click)='closeEditForm()' class="btn form-control alert-danger">CANCEL EDIT NOTE</button>
 </div>
+<!-- HOW CAN I SHOW CUSTOM ERROR MESSAGES? -->
