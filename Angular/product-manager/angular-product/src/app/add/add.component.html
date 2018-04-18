@@ -1,0 +1,33 @@
+<hr>
+<h2>ADD S NEW PRODUCT</h2>
+<form>
+  <input 
+  type="text"
+  name="title"
+  placeholder="PRODUCT TITLE"
+  required
+  minlength="3"
+  maxlength="50"
+  [(ngModel)]="newProduct.title"
+  #title="ngModel"
+  />
+  <input 
+  type="number"
+  name="price"
+  placeholder="PRODUCT PRICE"
+  required
+  min="1"
+  [(ngModel)]="newProduct.price"
+  #price="ngModel"
+  />
+  <input 
+  type="text"
+  name="url"
+  placeholder="PRODUCT URL"
+  required
+  minlength="3"
+  [(ngModel)]="newProduct.url"
+  #url="ngModel"
+  />
+  <button></button>
+</form>
