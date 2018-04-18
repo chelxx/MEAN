@@ -1,5 +1,5 @@
 <h1>ANONYMOUS NOTES</h1>
-<form (submit)="addNote()" name="noteForm">
+<form (submit)="addNote()" #noteForm="ngForm">
   <input 
   type="text"
   name="note"
@@ -12,8 +12,9 @@
   placeholder="ENTER ANONYMOUS NOTE HERE"
   />
   <div *ngIf="!note.valid">
-    <p style="color: tomato">{{ note.errors | json }}</p>
-    <p style="color: tomato">Invalid Note. Try again!</p>
+    <p style="color: tomato" *ngIf="note.errors.required">Anonymous Note is required!</p>
+    <p style="color: tomato" *ngIf="note.errors.minlength">Anonymous Note is too short!</p>
+    <p style="color: tomato" *ngIf="note.errors.maxlength">Anonymous Note is too long!</p>
   </div>
   <div *ngIf="note.valid">
     <p style="color: green">Nice. Note is error-free and ready to go!</p>
@@ -25,11 +26,11 @@
   <h3>{{ n.note }}</h3>
   <footer>{{ n.createdAt | date : 'MMMM dd, yyyy - hh:mm a' }}</footer>
   <button (click)='deleteNote(n._id)' class="btn alert-danger">DELETE</button>
-  <button (click)='openEditForm(n._id)' class="btn alert-success">EDIT FORM</button>
+  <button (click)='openEditForm(n._id)' class="btn alert-success" [disabled]="!noteForm.valid">EDIT FORM</button>
 </blockquote>
 <hr>
 <div *ngIf="banana == true">
-  <form (submit)="editNote(id)">
+  <form (submit)="editNote(id)" #noteForm="ngForm">
     <input 
     type="text"
     name="note"
@@ -44,12 +45,13 @@
     <button type="submit" class="btn btn-info form-control">EDIT NOTE</button>
   </form>
   <div *ngIf="!note.valid">
-    <p style="color: tomato">{{ note.errors | json }}</p>
-    <p style="color: tomato">Invalid Note. Try again!</p>
+    <p style="color: tomato" *ngIf="note.errors.required">Anonymous Note is required!</p>
+    <p style="color: tomato" *ngIf="note.errors.minlength">Anonymous Note is too short!</p>
+    <p style="color: tomato" *ngIf="note.errors.maxlength">Anonymous Note is too long!</p>
   </div>
   <div *ngIf="note.valid">
     <p style="color: green">Nice. Note is error-free and ready to go!</p>
   </div>
-  <button (click)='closeEditForm()' class="btn form-control alert-danger">CANCEL EDIT NOTE</button>
+  <button (click)='closeEditForm()' class="btn form-control alert-danger" [disabled]="!noteForm.valid">CANCEL EDIT NOTE</button>
 </div>
 <!-- HOW CAN I SHOW CUSTOM ERROR MESSAGES? -->

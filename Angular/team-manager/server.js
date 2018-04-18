@@ -35,9 +35,22 @@ var PlayerSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        game1: {}
+        game1: {
+			playing: {type:Boolean, default: false},
+			notPlaying:{type:Boolean, default: false},
+			undecided:{type:Boolean, default: true},
+		},
+		game2: {
+			playing: {type:Boolean, default: false},
+			notPlaying:{type:Boolean, default: false},
+			undecided:{type:Boolean, default: true},
+		},
+		game3: {
+			playing: {type:Boolean, default: false},
+			notPlaying:{type:Boolean, default: false},
+			undecided:{type:Boolean, default: true},
+		},
     }
-
 }, {timestamps:true});
 
 mongoose.model('Player', PlayerSchema);
@@ -45,6 +58,12 @@ var Player = mongoose.model('Player');
 
 // ********************
 // START OF ROUTES
+
+// LIST OF PLAYERS
+
+// CREATE PLAYER
+
+// DELETE PLAYER
 
 // END OF ROUTES
 // ********************
