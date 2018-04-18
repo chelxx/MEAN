@@ -21,6 +21,7 @@ var Schema = mongoose.Schema;
 var NoteSchema = new mongoose.Schema({
     note: {
         type: String,
+        required: true,
         minlength: [3, "Note must have more than 3 characters!"]
     }
 }, {timestamps:true});
@@ -33,7 +34,7 @@ app.post('/api/notes', function(req, res) {
     var note = new Note({ note: req.body.note });
     note.save(function(err){
         if(err) {
-            console.log("SERVER! NOTE CREATION ERROR!");
+            console.log("SERVER! NOTE CREATION ERROR!", err);
             res.json({message: "Error!", error: err});
         }
         else {
@@ -47,7 +48,7 @@ app.post('/api/notes', function(req, res) {
 app.get('/api/notes', function(req, res) {
     Note.find({}).exec(function(err, notes) {
         if(err) {
-            console.log("SERVER! GETTING NOTES ERROR!");
+            console.log("SERVER! GETTING NOTES ERROR!", err);
             res.json({message: "Error!", error: err});            
         }
         else {
@@ -61,13 +62,44 @@ app.get('/api/notes', function(req, res) {
 app.delete('/api/notes/:id', function(req, res) {
     Note.remove({ _id: req.params.id }, function(err) {
         if(err) {
-            console.log("SERVER! DELETING A NOTE!");
+            console.log("SERVER! DELETING A NOTE!", err);
             res.json({message: "Error!", error: err});
         }
         else {
             console.log("SERVER! DELETED A NOTE!");
             res.json({message: "Success!"})
         }
+    })
+})
+
+// FIND A NOTE BY ID TO EDIT
+app.get('/api/notes/:id', function(req, res) {
+    Note.findOne({ _id: req.params.id }, function(err, note) {
+        if(err){
+            console.log("SERVER! GETTING NOTE BY ID ERROR!", err);            
+			res.json({message: "Error!", error: err})
+		}
+		else {
+            console.log("SERVER! GOT A NOTE BY ID!");            
+			res.json({message: "Success!", note: note})
+		}
+    })
+})
+
+// EDIT A NOTE
+app.put('/api/notes/:id', function(req, res){
+    var note = Note.findOne( { _id: req.params.id }).exec(function(err, note){
+    note.note = req.body.note;
+    note.save(function(err, note){
+        if(err) {
+            console.log("SERVER! UPDATING A NOTE!", err);
+            res.json({message: "Error!", error: err});
+        }
+        else {
+            console.log("SUCCESS! UPDATED THE NOTE!")
+            res.json({message: "Success!", note: note});
+        }
+    })
     })
 })
 

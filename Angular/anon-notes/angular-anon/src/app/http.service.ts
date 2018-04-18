@@ -20,4 +20,12 @@ export class HttpService {
     console.log('SERVICE! DELETING A NOTE!')
     return this._http.delete(`/api/notes/${noteid}`).map(data => data).toPromise();
   }
+  editNote(noteid, edNote) {
+    console.log('SERVICE! EDITING A NOTE!')
+    return this._http.put(`/api/notes/${noteid}`, edNote).map(data => data).toPromise();
+  }
+  getNoteByID(noteid) {
+    console.log('SERVICE! GETTING A NOTE BY ID!')
+    return this._http.get(`/api/notes/${noteid}`).map(data => data).toPromise();
+  }
 }

@@ -2,18 +2,37 @@
 <form (submit)="addNote()">
   <input 
   type="text"
-  name="email"
+  name="note"
   required
   minlength="3"
   maxlength="250"
   [(ngModel)]="newNote.note"
   class="form-control"
+  placeholder="ENTER ANONYMOUS NOTE HERE"
   >
   <button type="submit" class="btn btn-info form-control">ADD NOTE</button>
 </form>
 <hr>
-<blockquote *ngFor="let n of noteList">
+<blockquote *ngFor="let n of noteList" ng-repeat="n in noteList | orderBy:'-createdAt'">
   <h3>{{ n.note }}</h3>
-  <footer>{{ n.createdAt }}</footer>
+  <footer>{{ n.createdAt | date : 'MMMM dd, yyyy - hh:mm a' }}</footer>
   <button (click)='deleteNote(n._id)' class="btn alert-danger">DELETE</button>
+  <button (click)='openEditForm(n._id)' class="btn alert-success">EDIT FORM</button>
 </blockquote>
+<hr>
+<div *ngIf="banana == true">
+  <form (submit)="editNote(id)">
+    <input 
+    type="text"
+    name="note"
+    required
+    minlength="3"
+    maxlength="250"
+    [(ngModel)]="edNote.note"
+    class="form-control"
+    value="{{ note }}"
+    >
+    <button type="submit" class="btn btn-info form-control">EDIT NOTE</button>
+  </form>
+  <button (click)='closeEditForm()' class="btn form-control alert-danger">CANCEL EDIT NOTE</button>
+</div>
