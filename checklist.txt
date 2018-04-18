@@ -15,40 +15,28 @@ npm install ejs --save
 npm install express-session --save
 npm install bcrypt-as-promised --save
 npm install socket.io --save
-
 mkdir static
-
 mkdir views
 
 touch server.js
-
 nodemon server.js 
-
-// THE END
 
 // Notes:
 // Only npm install the modules you need
 
+********************
+********************
+********************
 
 ANGULAR PROJECT:
 
-ng new *project_name* --routingcd
+ng new *project_name* --routing
 cd *project_name*
 ng build --watch
 
 ng serve
 
-EXPRESS + ANGULAR:
-
-Method #1:
-Start an EXPRESS Proje
-cd into EXPRESS Project
-Start an ANGULAR Project in the root directory of the EXPRESS Project
-
-Method #2:
-Start and EXPRESS Project
-Start an ANGULAR Project
-Drag & Drop the ANGULAR Project into the EXPRESS Project
+********************
 
 ADD A SERVICE:
 
@@ -70,32 +58,73 @@ import
 make an attribute
 
 ********************
+
+ADD A COMPONENT:
+
 ng g c *component_name*
 
-ng new sample-app --routing
-
-
-
+********************
+********************
 ********************
 
-{
-  "name": "pokemon-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt-as-promised": "^1.1.0",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.0.14"
-  }
-}
+EXPRESS + ANGULAR:
+
+Method #1:
+Start an EXPRESS Proje
+cd into EXPRESS Project
+Start an ANGULAR Project in the root directory of the EXPRESS Project
+
+Method #2:
+Start and EXPRESS Project
+Start an ANGULAR Project
+Drag & Drop the ANGULAR Project into the EXPRESS Project
 
 ********************
+********************
+********************
+
+EXPRESS  + ANGULAR:
+BARE BONES SERVER.JS:
+
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+var mongoose = require('mongoose');
+
+var app = express();
+
+mongoose.Promise = global.Promise;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static( __dirname + '/angular-app/dist' ));
+app.set("views", path.join(__dirname, "./views"));
+
+mongoose.connect('mongodb://localhost/SchemaName');
+
+var Schema = mongoose.Schema;
+
+var NameSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        minlength: [3, "Name must have more than 3 characters!"]
+    }
+}, {timestamps:true});
+
+mongoose.model('Name', NameSchema);
+var Name = mongoose.model('Name');
+
+// START OF ROUTES
+// ROUTES GO HERE
+// END OF ROUTES
+
+app.all("*", (req,res,next) => {
+    res.sendFile(path.resolve("./angular-anon/dist/index.html"))
+});
+
+var server = app.listen(6789, function() {
+    console.log("Listening on port 6789!");
+});
