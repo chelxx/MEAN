@@ -35,7 +35,7 @@ cd *project_name*
 ng build --watch
 
 ng serve
-
+cd 
 ********************
 
 ADD A SERVICE:
