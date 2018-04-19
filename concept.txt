@@ -1,0 +1,39 @@
+
+CONCEPTUAL QUESTIONS:
+
+1. NoSQL vs SQL Databases. What are the differences? Which is better? When do you want to use each one?
+
+*** SQL databases use structured query languages (SQL) for defining and manipulating data. This is extremely powerful: SQL is one of the most versatile and widely-used options available, making it a safe choice and especially great for complex queries. Meanwhile, a NoSQL database has dynamic schema for unstructured data, and data can be stored in many ways. Data structure is flexible, you can create documents without having to define the structure, each document can be have its own unique structure, and you can also add fields as you go. ***
+
+2. What are the 5 HTTP verbs?
+
+*** GET - Reads
+     POST - Creates
+     PUT/PATCH - Updates
+     DELETE - Destroys ***
+
+3. What is a callback function?
+
+*** It is a function which is passed to another function as a parameter and is executed when the outer function is completed. ***
+
+4. What is AJAX and what does it mean? 
+
+*** Asynchronous Javascript and XML (AJAX) is a technique for creating better, faster, and more interactive web apps. It allows web pages to be updated asynchronously by exchanging small amounts of data with the server behind the scenes. It makes it possible for portions of the web pages to be updated without reloading the whole page.
+
+5.Client-side rendering vs Server-side rendering?
+
+Server-side rendering works by converting HTML files in the server into usable information for the browser. Meanwhile, client-side rendering works by rendering content in the browser using Javscript. So instead of getting all of the content from the HTML document itself, you are getting a bare-bones HTML document with a JavaScript file that will render the rest of the site using the browser. 
+
+6.  Explain the HTTP request and response cycle.
+
+
+7. What is a templating engine?
+
+Templating engines (e.g. Embedded Javascript Templates a.k.a. EJS) enables you to use static template files in your application. At runtime, the templating engine replaces the variables in a template file with actual values, and tranforms the template into an HTML that will be served to the client.
+
+8. What is CRUD?
+
+*** CREATE - Creates a new record/document
+     READ - Reads records/documents
+     UPDATE - Updates records/documents based on given conditions (via id, name, etc.)
+     DESTROY - Deletes records/documents based on given conditions (via id, name, etc.) ***
