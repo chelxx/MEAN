@@ -31,8 +31,8 @@ var ProductSchema = new mongoose.Schema({
     },
     url: {
         type: String,
-        default: "https://cdn3.iconfinder.com/data/icons/user-interface-icons-bundle-18/32/910-512.png"
-    }
+        default: "https://www.gsb.stanford.edu/sites/gsb/files/styles/270x270/public/photo-msx-fellow-michael-choi.jpg?itok=eSVL9P9P"
+    },
 }, {timestamps:true});
 
 mongoose.model('Product', ProductSchema);
@@ -43,7 +43,7 @@ var Product = mongoose.model('Product');
 
 // LIST OF ALL PRODUCTS
 app.get('/api/products', function(req, res) {
-    Product.find({}).exec(function(err, products) {
+    Product.find({}).sort({ createdAt: 'desc' }).exec(function(err, products) {
         if(err) {
             console.log("SERVER! GETTING PRODUCTS ERROR!", err);
             res.json({message: "Error!", error: err});            
@@ -57,7 +57,7 @@ app.get('/api/products', function(req, res) {
 
 // CREATE PRODUCT
 app.post('/api/products', function(req, res) {
-    var product = new Product({ title: req.body.title, price: req.body.price, url: req.body.url });
+    var product = new Product({ title: req.body.title, price: req.body.price, url: req.body.url, date: req.body.date });
     product.save(function(err) {
         if(err) {
             console.log("SERVER! PRODUCT CREATION ERROR!", err);
@@ -129,3 +129,8 @@ app.all("*", (req,res,next) => {
 var server = app.listen(6789, function() {
     console.log("Listening on port 6789!");
 });
+
+// NOTES:
+// REGEX I USED IN MY FRONT END:
+// LETTERS ONLY: ^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$
+// NUMBERS ONLY: ^[0-9]+$

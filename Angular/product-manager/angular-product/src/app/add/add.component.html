@@ -9,7 +9,7 @@
   required
   minlength="3"
   maxlength="50"
-  pattern="^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$"
+  pattern="^\s*[a-zA-Z,\s]+\s*$"
   [(ngModel)]="newProduct.title"
   #title="ngModel"
   />
@@ -21,6 +21,7 @@
   <div *ngIf="title.valid">
     <p class="success">Nice! You're good to go!</p>
   </div>
+
   <input 
   type="text"
   name="price"
@@ -42,6 +43,7 @@
   <div *ngIf="price.value <= 0">
     <p class="error">Product Price is too low!</p>
   </div>
+
   <input 
   type="text"
   name="url"
@@ -54,5 +56,6 @@
   <div *ngIf="url.valid">
     <p class="success">Nice! You're good to go!</p>
   </div>
+
   <button type="submit" class="btn form-control" [disabled]="!productForm.valid">SUBMIT</button>
 </form>

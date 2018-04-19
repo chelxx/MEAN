@@ -27,7 +27,7 @@ import { OneproductComponent } from './oneproduct/oneproduct.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
