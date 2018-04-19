@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { ActivatedRoute, Params, Router} from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-oneproduct',
@@ -11,9 +11,6 @@ export class OneproductComponent implements OnInit {
 
   edProduct = { title: "", price: null, url: "" };
   productID;
-  productTitle;
-  productPrice;
-  productURL;
   error;
 
   constructor(private _httpService: HttpService, private _router: Router, private _route: ActivatedRoute) { }
@@ -24,10 +21,7 @@ export class OneproductComponent implements OnInit {
       var observable = this._httpService.oneProduct(this.productID);
       observable.subscribe(data => {
         this.edProduct = data['product']
-        // this.productTitle = data['product']['title'];
-        // this.productPrice = data['product']['price'];
-        // this.productURL = data['product']['url'];
-        console.log("EDIT-COMP! ONE PRODUCT!", this.productID, this.productTitle, this.productPrice, this.productURL)
+        console.log("EDIT-COMP! ONE PRODUCT!");
       })
     })
   }
