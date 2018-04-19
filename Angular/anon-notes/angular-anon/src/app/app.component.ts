@@ -60,9 +60,8 @@ export class AppComponent {
     this.banana = true;
     console.log("OPENING THE EDIT FORM!");
     this._httpService.getNoteByID(noteid).then(data => {
-       this.note = data['note'].note;
-       this.id = data['note']._id;
-       console.log("RESULT:", this.note, this.id)
+       this.edNote = data['note'];
+       console.log("RESULT:", this.edNote.note, this.edNote._id)
     });
   }
 

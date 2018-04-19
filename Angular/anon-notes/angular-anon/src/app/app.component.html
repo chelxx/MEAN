@@ -19,18 +19,18 @@
   <div *ngIf="note.valid">
     <p style="color: green">Nice. Note is error-free and ready to go!</p>
   </div>
-  <button type="submit" class="btn btn-info form-control">ADD NOTE</button>
+  <button type="submit" class="btn btn-info form-control" [disabled]="!noteForm.valid">ADD NOTE</button>
 </form>
 <hr>
 <blockquote *ngFor="let n of noteList" ng-repeat="n in noteList | orderBy:'-createdAt'">
   <h3>{{ n.note }}</h3>
   <footer>{{ n.createdAt | date : 'MMMM dd, yyyy - hh:mm a' }}</footer>
   <button (click)='deleteNote(n._id)' class="btn alert-danger">DELETE</button>
-  <button (click)='openEditForm(n._id)' class="btn alert-success" [disabled]="!noteForm.valid">EDIT FORM</button>
+  <button (click)='openEditForm(n._id)' class="btn alert-success">EDIT FORM</button>
 </blockquote>
 <hr>
 <div *ngIf="banana == true">
-  <form (submit)="editNote(id)" #noteForm="ngForm">
+  <form (submit)="editNote(edNote._id)" #ednoteForm="ngForm">
     <input 
     type="text"
     name="note"
@@ -40,9 +40,8 @@
     [(ngModel)]="edNote.note"
     #note="ngModel"
     class="form-control"
-    value="{{ note }}"
     />
-    <button type="submit" class="btn btn-info form-control">EDIT NOTE</button>
+    <button type="submit" class="btn btn-info form-control" [disabled]="!ednoteForm.valid">EDIT NOTE</button>
   </form>
   <div *ngIf="!note.valid">
     <p style="color: tomato" *ngIf="note.errors.required">Anonymous Note is required!</p>
@@ -52,6 +51,5 @@
   <div *ngIf="note.valid">
     <p style="color: green">Nice. Note is error-free and ready to go!</p>
   </div>
-  <button (click)='closeEditForm()' class="btn form-control alert-danger" [disabled]="!noteForm.valid">CANCEL EDIT NOTE</button>
+  <button (click)='closeEditForm()' class="btn form-control alert-danger">CANCEL EDIT NOTE</button>
 </div>
-<!-- HOW CAN I SHOW CUSTOM ERROR MESSAGES? -->

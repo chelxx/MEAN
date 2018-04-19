@@ -1,0 +1,9 @@
+button.btn {
+    background-color: pink;
+}
+.error {
+    color: tomato;
+}
+.success {
+    color: yellowgreen;
+}

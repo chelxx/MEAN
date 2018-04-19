@@ -1,3 +1,50 @@
-<p>
-  oneproduct works!
-</p>
+<hr>
+<h2>EDIT PRODUCT</h2>
+<form (submit)="editProduct()">
+    <!-- ERROR COMES UP WHEN USING #productForm="ngModel" ON FORM TAG -->
+    <input 
+    type="text"
+    name="title"
+    class="form-control"
+    required
+    minlength="3"
+    maxlength="50"
+    [(ngModel)]="edProduct.title"
+    #title="ngModel"
+    />
+    <div *ngIf="!title.valid">
+      <p *ngIf="title.errors.required" class="error">Product Title is required.</p>
+      <p *ngIf="title.errors.minlength" class="error">Product Title must be at least 3 characters.</p>
+    </div>
+    <div *ngIf="title.valid">
+      <p class="success">Nice! You're good to go!</p>
+    </div>
+    <input 
+    type="number"
+    name="price"
+    class="form-control"
+    required
+    min="1"
+    [(ngModel)]="edProduct.price"
+    #price="ngModel"
+    />
+    <div *ngIf="!price.valid">
+      <p *ngIf="price.errors.required" class="error">Product Price is required.</p>
+    </div>
+    <div *ngIf="price.valid">
+      <p class="success">Nice! You're good to go!</p>
+    </div>
+    <input 
+    type="text"
+    name="url"
+    class="form-control"
+    minlength="3"
+    [(ngModel)]="edProduct.url"
+    #url="ngModel"
+    />
+    <div *ngIf="url.valid">
+      <p class="success">Nice! You're good to go!</p>
+    </div>
+    <button type="submit" class="btn form-control">SUBMIT</button>
+  </form>
+  <!-- WHEN UPDATING, THE URL FIELD IS POPULATED BUT IT DOESNT GO THROUGH -->

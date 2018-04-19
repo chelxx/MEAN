@@ -1,0 +1,15 @@
+table.table.table-striped td {
+    text-align:center; 
+    vertical-align:middle;
+}
+table.table.table-striped th {
+    text-align:center; 
+    vertical-align:middle;
+}
+td img {
+    height: 100px;
+}
+button.btn {
+    background-color: pink;
+    margin-left: 5px;
+}

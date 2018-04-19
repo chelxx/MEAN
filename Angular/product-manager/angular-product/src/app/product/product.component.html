@@ -1,2 +1,20 @@
 <hr>
 <h2>PRODUCTS LIST</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TITLE</th>
+            <th>PRICE</th>
+            <th>IMAGE</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let p of products">
+        <tr>
+            <td>{{ p.title }}</td>
+            <td>{{ p.price | currency }}</td>
+            <td><img src="{{ p.url }}"></td>
+            <td><button class="btn" [routerLink]="['/oneproduct', p._id]" value="{{ p._id }}">EDIT</button><button class="btn" (click)="deleteProduct(p._id)">DELETE</button></td>
+        </tr>
+    </tbody>
+</table>

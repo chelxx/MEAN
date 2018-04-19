@@ -99,7 +99,7 @@ app.get('/api/products/:id', function(req, res) {
 
 // EDIT PRODUCT
 app.put('/api/products/:id', function(req, res) {
-    var product = Note.findOne({ _id: req.params.id }).exec(function(err, product) {
+    var product = Product.findOne({ _id: req.params.id }).exec(function(err, product) {
         product.title = req.body.title;
         product.price = req.body.price;
         product.url = req.body.url;
@@ -120,7 +120,7 @@ app.put('/api/products/:id', function(req, res) {
 // ******************** //
 
 app.all("*", (req,res,next) => {
-    res.sendFile(path.resolve("./angular-anon/dist/index.html"))
+    res.sendFile(path.resolve("./angular-product/dist/index.html"))
 });
 
 // ******************** //
