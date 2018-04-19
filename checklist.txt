@@ -18,7 +18,7 @@ npm install socket.io --save
 mkdir static
 mkdir views
 
-touch server.js
+ng
 nodemon server.js 
 
 // Notes:

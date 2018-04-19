@@ -26,6 +26,7 @@ var ProductSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
+        min: 0,
         required: [true, "Product Price is required!"]
     },
     url: {

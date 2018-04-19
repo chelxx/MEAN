@@ -1,7 +1,6 @@
 <hr>
 <h2>EDIT PRODUCT</h2>
-<form (submit)="editProduct()">
-    <!-- ERROR COMES UP WHEN USING #productForm="ngModel" ON FORM TAG -->
+<form (submit)="editProduct()" #editProduct="ngForm">
     <input 
     type="text"
     name="title"
@@ -45,5 +44,5 @@
     <div *ngIf="url.valid">
       <p class="success">Nice! You're good to go!</p>
     </div>
-    <button type="submit" class="btn form-control">SUBMIT</button>
+    <button type="submit" class="btn form-control" [disabled]="!editForm.valid">SUBMIT</button>
   </form>
