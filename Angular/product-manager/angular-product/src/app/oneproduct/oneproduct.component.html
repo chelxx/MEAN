@@ -8,12 +8,14 @@
     required
     minlength="3"
     maxlength="50"
+    pattern="^\s*[a-zA-Z,\s]+\s*$"
     [(ngModel)]="edProduct.title"
     #title="ngModel"
     />
     <div *ngIf="!title.valid">
       <p *ngIf="title.errors.required" class="error">Product Title is required.</p>
       <p *ngIf="title.errors.minlength" class="error">Product Title must be at least 3 characters.</p>
+      <p *ngIf="title.errors.pattern" class="error">Product Title cannot contain any numbers or special characters.</p> 
     </div>
     <div *ngIf="title.valid">
       <p class="success">Nice! You're good to go!</p>
@@ -24,11 +26,13 @@
     class="form-control"
     required
     min="1"
+    pattern="^[0-9]+$"
     [(ngModel)]="edProduct.price"
     #price="ngModel"
     />
     <div *ngIf="!price.valid">
       <p *ngIf="price.errors.required" class="error">Product Price is required.</p>
+      <p *ngIf="price.errors.pattern" class="error">Product Price cannot contain any letters.</p>
     </div>
     <div *ngIf="price.valid">
       <p class="success">Nice! You're good to go!</p>

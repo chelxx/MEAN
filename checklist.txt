@@ -34,8 +34,7 @@ ng new *project_name* --routing
 cd *project_name*
 ng build --watch
 
-ng serve
-cd 
+ng serve // only if project is angular ONLY
 
 ********************
 
