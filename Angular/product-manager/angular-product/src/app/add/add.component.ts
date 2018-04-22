@@ -11,7 +11,6 @@ import { ActivatedRoute, Params, Router} from '@angular/router';
 export class AddComponent implements OnInit {
 
   newProduct = { title: "", price: null, url: "" };
-  todaysdate;
   error;
 
   constructor(private _httpService: HttpService, private _router: Router, private _route: ActivatedRoute) { }

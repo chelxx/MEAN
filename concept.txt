@@ -1,9 +1,9 @@
 
 CONCEPTUAL QUESTIONS:
 
-1. NoSQL vs SQL Databases. What are the differences? Which is better? When do you want to use each one?
+1. NoSQL vs SQL Databases. What are the differences? Which is better? When do you want to use each one? Which one is better?
 
-*** SQL databases use structured query languages (SQL) for defining and manipulating data. This is extremely powerful: SQL is one of the most versatile and widely-used options available, making it a safe choice and especially great for complex queries. Meanwhile, a NoSQL database has dynamic schema for unstructured data, and data can be stored in many ways. Data structure is flexible, you can create documents without having to define the structure, each document can be have its own unique structure, and you can also add fields as you go. ***
+*** SQL databases use structured query languages (SQL) for defining and manipulating data. This is extremely powerful: SQL is one of the most versatile and widely-used options available, making it a safe choice and especially great for complex queries. Meanwhile, a NoSQL database has dynamic schema for unstructured data, and data can be stored in many ways. Data structure is flexible, you can create documents without having to define the structure, each document can be have its own unique structure, and you can also add fields as you go. So, which one is better? It depends on how you want to structure your database  and what kind of rules you want your data to follow. ***
 
 2. What are the 5 HTTP verbs?
 
@@ -26,6 +26,7 @@ Server-side rendering works by converting HTML files in the server into usable i
 
 6.  Explain the HTTP request and response cycle.
 
+*** A user opens their browser, types in a URL, and presses Enter. When the user presses Enter, the browser sends a GET request for that URL. The GET request hits the router. The router maps the URL to the correct controller action to handle the request. The action receives the GET request and passes it on to the view. The view renders the page as HTML. The controller sends the HTML back to the browser. The page loads and the user sees the page with the form. The user fills in the form and submits the form. When the user submits the form, the browser sends a POST request to the app. The POST request hits the router. The router maps the POSTrequest to the correct controller action. The action receives the POST request. The action retrieves the submitted data from the form, and uses the model to store the data into the database. The model completes its task. The controller action passes the request on to the view. The view renders the page as HTML. The controller sends the HTML back to the browser. The page loads and the user sees it. ***
 
 7. What is a templating engine?
 

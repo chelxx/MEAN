@@ -22,7 +22,12 @@ var ProductSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Product Name is required!"],
-        minlength: [3, "Product Title must have more than 3 characters!"]
+        minlength: [3, "Product Title must have more than 3 characters!"],
+        validate: {
+            validator: function(name){
+                return /^[a-z ,.'-]+$/i.test(name);
+            },
+            message: "Name cannot contain any special characters!"
     },
     price: {
         type: Number,
