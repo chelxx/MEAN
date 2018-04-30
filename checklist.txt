@@ -18,7 +18,8 @@ npm install socket.io --save
 mkdir static
 mkdir views
 
-ng
+touch server.js
+
 nodemon server.js 
 
 // Notes:
@@ -36,6 +37,12 @@ ng build --watch
 
 ng serve // only if project is angular ONLY
 
+********************
+********************
+TO RUN ANGULAR + EXPRESS:
+1. ng build --watch
+2. nodemon server.js
+********************
 ********************
 
 ADD A SERVICE:
